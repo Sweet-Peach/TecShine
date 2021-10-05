@@ -3,14 +3,16 @@
     margin: 0;
 }
 
-body{
+.container-page{
     background-color: #FFD600;
 }
 .header{
+    background-color: white;
     width: 100vw;
-    height: 100px;
+    height: 70px;
     display: flex;
     align-items: center;
+    box-shadow: 0px 4px 50px rgba(34, 39, 46, 0.13);
 }
 .div-background-gradient{
     background: linear-gradient(180deg, #FFD600 0%, rgba(255, 231, 121, 0.75) 100%);
@@ -376,13 +378,19 @@ body{
 }
 
 .session-clc-financeira-container{
-    background: linear-gradient(0deg, rgba(255, 231, 121, 0.5), rgba(255, 231, 121, 0.5));
+    background-color: white;
+}
+
+.session-clc-financeira-container{
+    background: #FFD600;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(255, 255, 255, 0.29);
     border-radius: 50px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 50px;
+    margin-top: 50px;
+    
 }
 
 .session-clc-financeira-container h1{
