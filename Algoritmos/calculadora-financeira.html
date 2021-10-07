@@ -5,29 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecShine</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="./control.json"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main-style.css">
 </head>
 <body>
     <header class="header">
         <div class="container">
             <div class="header-container">
-                <div id="div-logo">
-                    <img src="./imagens/lamp.svg" alt="">
+                <div id="div-header-container-logo">
+                    <img src="./imagens/lamp-logo-1.png" alt="">
                     <h1 class="logo-text">TECSHINE</h1>
                 </div>
-                <ul class="nav-bar">
-                    <li><a href="index.html">Home</a></li>
+                <ul class="header-nav-bar">
+                    <li id="li-left"><a href="./index.html">Home</a></li>
                     <li id="li-center"><a href="">Sobre</a></li>
-                    <li><a href="">Contato</a></li>
+                    <li id="li-right"><a href="">Contato</a></li>
                 </ul>
-                <div class="div-login-cadastro">
+                <div class="div-header-container-login-cadastro">
                     <a href="" id="btn-cadastrar">Cadastre-se</a>
                     <a href="" id="btn-login">Login</a>
                 </div>
@@ -35,27 +28,39 @@
         </div>
     </header>
 
-    <section class="session-clc-financeira">
+    <section class="clc">
         <div class="container">
-            <div class="session-clc-financeira-container">
-                <h1 class="titulo-clc-financeira">SIMULADOR</h1>
-                <p>Preencha os campos abaixo para ter acesso à comparação de consumo sem e com o nosso serviço.</p>
-                <div class="form">
-                    <label for="inp_qtd_lamp" id="lbl-form1">Quantidade de lâmpadas:</label><input type="text" name="" id="inp_qtd_lamp" class="inp-clc-financeira">
-                    <label for="inp_volt_wttz" id="lbl-form2">Voltagem da lâmpada em Watts:</label><input type="text" name="" id="inp_volt_wttz" class="inp-clc-financeira">
-                    <label for="inp_tempo_ligada" id="lbl-form3">Por quanto tempo ela fica ligada? (Coloque em horas)</label><input type="text" name="" id="inp_tempo_ligada" class="inp-clc-financeira">
-                    <label for="qtd_media_pessoas" id="lbl-form4">Quantidade média de pessoas que passam pela lâmpada por dia:</label><input type="text" name="" id="qtd_media_pessoas" class="inp-clc-financeira">
+            <div class="clc-container">
+                <h1 id="clc-titulo">SIMULADOR</h1>
+                <p id="clc-desc">Preencha os campos abaixo para ter acesso à comparação de consumo sem e com o nosso serviço.</p>
+                <div id="clc-form-n-img">
+                    <div id="clc-form">
+                        <label for="" class="clc-qst">Quantidade de lâmpadas:</label><input type="text" name="" id="" class="clc-inp">
+                        <label for="" class="clc-qst">Voltagem da lâmpada em Watts:</label><input type="text" name="" id="" class="clc-inp">
+                        <label for="" class="clc-qst">Por quanto tempo ela fica ligada? (Coloque em horas)</label><input type="text" name="" id="" class="clc-inp">
+                        <label for="" class="clc-qst">Quantidade média de pessoas que passam pela lâmpada por dia:</label><input type="text" name="" id="" class="clc-inp">
+                        <input type="button" value="Simular" id="clc-btn">
+                    </div>
+                    <div id="clc-img">
+                        <img src="./imagens/vetor-clc.png" alt="">
+                    </div>
                 </div>
-                <div class="part2">
-                    
-                </div>
-                <a href="" class="btn-simular">Simular</a>
             </div>
         </div>
     </section>
 
-    <footer class="footer" style="height: 35px;">
-        
+    <footer class="footer-clc">
+        <div class="container">
+            <div class="div-footer1">
+                <p class="footer-direitos">Todos os direitos reservados para o site TecShine         ©2021 </p>
+            </div>
+            <div class="div-footer2">
+                <img src="./imagens/instagram.svg" alt="" class="redes-sociais">
+                <img src="./imagens/facebook.svg" alt="" class="redes-sociais">
+                <img src="./imagens/twitter.svg" alt="" class="redes-sociais">
+            </div>
+        </div>
     </footer>
+
 </body>
 </html>
