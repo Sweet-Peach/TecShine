@@ -54,11 +54,12 @@
     function verificar() {
         if (!email.value.includes ('@' && '.com')) {
              alert ('Dados inválidos') //include ('@')
-        } else if (telefone.value.leigth > 10) {
+        } else {
+            if (!(telefone.value.length >=10) || !(telefone.value.length <=11)) {
             alert ('Dados inválidos')
-        }
-        else {
+        } else {
             window.location.href= "https://www.google.com/search?q=verifica%C3%A7%C3%A3o+no+html&rlz=1C1GCEU_pt-BRBR832BR942&oq=verifica%C3%A7%C3%A3o+no+html&aqs=chrome..69i57j0i333.3846j1j7&sourceid=chrome&ie=UTF-8"
         }
+    }
     }
 </script>
