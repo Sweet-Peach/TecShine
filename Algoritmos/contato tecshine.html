@@ -10,7 +10,7 @@
 <body>
     <div class="header">
         <div class="container">
-            <img class="logo" src="./lampada 3.png">
+            <img class="logo" src="./Component 9.png">
             <h1>TECSHINE</h1>
             <ul class="navbar">
                 <li><a href="#"> Home</a></li>
@@ -28,11 +28,11 @@
        <h3>ficou com alguma dúvida, tem alguma crítica ou sugestão? Preenche esse formulário rapidinho e a gente entra em contato com você.</h3>
             <div class="inputs"> 
                 <input type="text" class="ipt" placeholder="Nome completo"> 
-                <input type="text" class="ipt" placeholder="Número do celular">  
-                <input type="text" class="ipt" placeholder="E-mail"> 
+                <input type="text" id="telefone" class="ipt" placeholder="Número do celular">  
+                <input type="text" id="email" class="ipt" placeholder="E-mail"> 
                 <input type="text" class="ipt_msg" placeholder="Escreva sua mensagem">
                 <br>
-                <button>Enviar</button>
+                <button type="button" onclick="verificar()">Enviar</button>
             </div>
             <img src="./imagem contato.png" alt="">
         </div>
@@ -49,3 +49,16 @@
     </div>
 </body>
 </html>
+
+<script>
+    function verificar() {
+        if (!email.value.includes ('@' && '.com')) {
+             alert ('Dados inválidos') //include ('@')
+        } else if (telefone.value.leigth > 10) {
+            alert ('Dados inválidos')
+        }
+        else {
+            window.location.href= "https://www.google.com/search?q=verifica%C3%A7%C3%A3o+no+html&rlz=1C1GCEU_pt-BRBR832BR942&oq=verifica%C3%A7%C3%A3o+no+html&aqs=chrome..69i57j0i333.3846j1j7&sourceid=chrome&ie=UTF-8"
+        }
+    }
+</script>

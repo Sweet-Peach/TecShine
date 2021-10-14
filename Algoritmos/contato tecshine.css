@@ -22,12 +22,12 @@
 }
 
 .container h1 {
-    padding-left: 8vw;
     font-weight: lighter;
 }
 
 .container .logo {
-    padding-left: 10vw;
+    margin-left: 10vw;
+    height: 40px;
 }
 
 .navbar {
@@ -47,7 +47,7 @@
 .box {
     background-color: #FFD600;
     width: 80vw;
-    height: 90vh;
+    height: 95vh;
     border-radius: 50px;
     margin: 5vh 5vw 5vh 5vw;
     padding-left: 5vw;
@@ -80,7 +80,7 @@
 }
 
 .inputs {
-    background-color: #414141;
+    background-color: #63737A;
     width: 45%;
     height: 65%;
     border-radius: 10px;
@@ -89,10 +89,15 @@
 }
 
 .inputs button {
-    color: white;
+    color: #FFD600;
     background-color: #414141;
     padding-bottom: 1vh;
-    margin-left: 300px;
+    margin-left: 150px;
+    width: 150px;
+    height: 30px;
+    justify-self: center;
+    border: solid #414141;
+    border-radius: 20px;
 }
 
 .box .ipt {
@@ -102,7 +107,7 @@
     border: white;
     margin-bottom: 3vh;
     padding-left: 1vw;
-    
+    margin-left: 25px;
 }
 
 .box .ipt_msg {
@@ -114,6 +119,7 @@
     padding-left: 1vw;
     padding-bottom: 75px;
     padding-top: 1px;
+    margin-left: 25px;
 }
 
 .box p {
