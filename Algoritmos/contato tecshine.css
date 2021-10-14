@@ -69,9 +69,14 @@
     padding-right: 20vw;
     font-size: 18px;
     font-weight: lighter;
-    margin-right: 300px;
-    
-    
+    margin-right: 300px; 
+}
+
+.box img {
+    padding-left: 50vw;
+    margin-top: 30px;
+    width: 300px;
+    height: 200px;
 }
 
 .inputs {
