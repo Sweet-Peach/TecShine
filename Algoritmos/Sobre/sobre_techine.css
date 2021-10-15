@@ -12,15 +12,7 @@ body{
     z-index: 1;
 }
 
-.container{
-    width: 80vw;
-    height: 10vh;
-    margin: 0 auto;
-    align-items: center;
-    justify-content: space-evenly ;
-    
-
-}
+/*inicio da div header*/
 .header{
     color: #414141;
     box-shadow: 13px -5px 10px;
@@ -29,6 +21,15 @@ body{
     background-color: #FFFFFF;
     height: 60px;
     z-index: 2;
+}
+.container{
+    width: 80vw;
+    height: 10vh;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-evenly ;
+    
+
 }
 
 .header .container{
@@ -58,7 +59,6 @@ button{
     font-family: Archivo;
 }
 
-
 .navbar{
     width: 100vw;
     height: 7vh;
@@ -75,6 +75,9 @@ button{
     background-color: #FFFFFF;
 }
 
+/*final da div header com todos seus componentes*/
+
+/*inicio da div social*/
 .social {
     width: 70%;
     height: 400px;
@@ -84,6 +87,15 @@ button{
     padding: 80px 50px;
     margin: 30px auto;
 }
+.social .container {
+    display: flex;
+    align-items: center;
+    height: max-content;
+    justify-content: space-evenly;
+    height: 50%;
+    margin: 0;
+
+}
 
 .social p{
     margin: 0;
@@ -91,7 +103,17 @@ button{
     font-size: 18px;
     font-family: Archivo;
     color: #414141;
-   
+    
+}
+.texto{
+   margin-left: -70px;
+   height: 250px;
+   font-family: Archivo ;
+}
+
+.texto h4{
+    font-weight: 600;
+    color:#263238;
 }
 
 .titulo {
@@ -117,34 +139,18 @@ button{
     font-weight: 500;
     color: #414141;
 }
-.social .container {
-    display: flex;
-    align-items: center;
-    height: max-content;
-    justify-content: space-evenly;
-    height: 50%;
-    margin: 0;
+/*final da div social com todos os seus componentes*/
 
-}
+/*inicio da div texto_img*/
 
-.texto{
-   margin-left: -70px;
-   height: 250px;
-   font-family: Archivo ;
-}
-
-.texto h4{
-    font-weight: 600;
-    color:#263238;
-}
-.imagem img {
+.texto_img img {
     position: absolute;
     height: 80px;
     left: 880px;
     top: 90px;
 }
 
-.imagem h4{
+.texto_img h4{
     position: absolute;
     width: 347px;
     height: 64px;
@@ -158,6 +164,10 @@ button{
     color: #263238;
 
 }
+
+/*final da div texto_img*/
+
+/*inicio da div boxes*/
  .boxes {
     display: flex;
     height: 40px;
@@ -175,8 +185,6 @@ button{
     width: 30%;
 }
 
-
-
 .social .box img {
     height: 90px;
     width: 90px;
@@ -190,7 +198,9 @@ button{
     margin-left: 15px;
 }
 
+/*final da div boxes com todos os seus componentes*/
 
+/* inicio do footer */
 .footer{
     background-color: #37474F;
     height: 10px;
@@ -220,3 +230,5 @@ button{
     height: 50%;
     margin: 0 15px;
 }
+
+/*final footer*/
