@@ -7,16 +7,19 @@
     <title>TecShine</title>
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/index.css">
+    <script type="text/JavaScript" src="./control.js"></script>
 </head>
 <body>
     <!-- Cabeçalho padrão do site -->
     <header class="header">
         <div class="container">
             <div class="header-container">
-                <div id="div-header-container-logo">
-                    <img src="./imagens/lampada-apagada.png" alt="" class="img" onmouseover="this.src='./imagens/lampada-acesa.png';" onmouseout="this.src='./imagens/lampada-apagada.png';">
-                    <h1 class="logo-text">TECSHINE</h1>
-                </div>
+                <a href="./index.html" class="header-acesso-index" id="header_logo_div">
+                    <div id="div-header-container-logo" onmouseover="headerLampAcesa(header_img, header_titulo, header_logo_div)" onmouseout="headerLampApagada(header_img, header_titulo, header_logo_div)">
+                        <img src="./imagens/lampada-apagada.png" alt="" class="img" id="header_img">
+                        <h1 class="logo-text" id="header_titulo">TECSHINE</h1>
+                    </div>
+                </a>
                 <ul class="header-nav-bar">
                     <li id="li-left"><a href="">Home</a></li>
                     <li id="li-center"><a href="">Sobre</a></li>
@@ -148,7 +151,3 @@
     </footer>
 </body>
 </html>
-
-<script>
-
-</script>

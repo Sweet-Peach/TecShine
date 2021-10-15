@@ -7,16 +7,19 @@
     <title>TecShine</title>
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/calculadora.css">
+    <script type="text/JavaScript" src="./control.js"></script>
 </head>
 <body>
     <!-- Cabeçalho padrão do site -->
     <header class="header">
         <div class="container">
             <div class="header-container">
-                <div id="div-header-container-logo">
-                    <img src="./imagens/lampada-apagada.png" alt="" class="img" onmouseover="this.src='./imagens/lampada-acesa.png';" onmouseout="this.src='./imagens/lampada-apagada.png';">
-                    <h1 class="logo-text">TECSHINE</h1>
-                </div>
+                <a href="./index.html" class="header-acesso-index" id="header_logo_div">
+                    <div id="div-header-container-logo" onmouseover="headerLampAcesa(header_img, header_titulo, header_logo_div)" onmouseout="headerLampApagada(header_img, header_titulo, header_logo_div)">
+                        <img src="./imagens/lampada-apagada.png" alt="" class="img" id="header_img">
+                        <h1 class="logo-text" id="header_titulo">TECSHINE</h1>
+                    </div>
+                </a>
                 <ul class="header-nav-bar">
                     <li id="li-left"><a href="./index.html">Home</a></li>
                     <li id="li-center"><a href="">Sobre</a></li>
@@ -83,51 +86,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
-<script>
-    const form = document.querySelector(".display-form")
-    const msg = document.querySelector(".display-msg")
-
-    function calc_simulacao(){
-        form.style.display = "none";
-        msg.style.display = "block";
-    
-        var horas = hora_media.value;
-        var quantlampadas = quant_lampadas.value;
-        var quantAcionamentos = pessoas_media.value;
-        var watts = voltagem_watts.value;
-        var quantKWPorAcionamento = watts / 60 / 60 * 15 / 1000;
-        // WATTS Potencia da lampadA   // 60 Conversão de horas para minutos // 60 Conversão de minutos para segundos // Gasto em watts por 15 segundos // 1000 Conversão de watts para kW  
-        
-        var kwh = (watts * horas * quantlampadas * 30 ) / 1000; // Define a quantidade de KWh que as lampadas gastam // 30 dias 
-    
-        var moeda = 0.928965517; // Valor por KWH na conta de luz
-    
-        span_qtd_lampadas.innerHTML = quantlampadas;
-    
-        span_kwh_normal.innerHTML = kwh.toFixed(2);
-    
-        span_valor_normal.innerHTML = (kwh * moeda).toFixed(2);
-    
-        span_kwh.innerHTML = ((kwh * 0.3) -         // KWH que gasta por mês numa intesidade de 30% da capacidade da potencia da lampada
-                            (quantKWPorAcionamento * //quantidade de watts que a lampada gasta a cada 15s(tempo de acionamento) 
-                            quantAcionamentos))      //quantidade de acionamentos
-                            .toFixed(2);
-    
-        span_valor.innerHTML = ((kwh * 0.3 - 
-        quantKWPorAcionamento * quantAcionamentos) * moeda).toFixed(2);
-    
-        span_porcentagem.innerHTML = (((kwh * 0.3 - quantKWPorAcionamento * quantAcionamentos) * moeda) / (kwh * moeda) * 100).toFixed(1) + '%';
-        div_barra.style.width =`${span_porcentagem.innerHTML}`;
-    
-        valor_KWH.innerHTML = moeda.toFixed(2);
-    }   
-
-    function voltar() {
-        form.style.display = "block";
-        msg.style.display = "none";
-    }
-
-</script>

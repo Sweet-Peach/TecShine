@@ -36,7 +36,9 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    transition: all 5s;
 }
+
 
 #div-header-container-logo .img {
     height: 40px;
@@ -163,4 +165,9 @@
     width: 20px;
     height: 20px;
     margin-right: 27px;
+}
+
+
+.header-acesso-index {
+    text-decoration: none;
 }
