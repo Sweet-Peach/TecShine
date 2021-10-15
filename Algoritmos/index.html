@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecShine</title>
-    <link rel="stylesheet" href="main-style.css">
+    <link rel="stylesheet" href="./css/main-style.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
     <!-- Cabeçalho padrão do site -->
@@ -13,7 +14,7 @@
         <div class="container">
             <div class="header-container">
                 <div id="div-header-container-logo">
-                    <img src="./imagens/lamp-logo-1.png" alt="">
+                    <img src="./imagens/lampada-apagada.png" alt="" class="img" onmouseover="this.src='./imagens/lampada-acesa.png';" onmouseout="this.src='./imagens/lampada-apagada.png';">
                     <h1 class="logo-text">TECSHINE</h1>
                 </div>
                 <ul class="header-nav-bar">
@@ -72,7 +73,7 @@
                 <div  class="lamp" id="lamp-two">
                     <img id="img-lamp-two" src="./imagens/lamp-two.svg" alt="">
                     <img src="./imagens/aproximacao.svg" alt="" id="aproximacao">
-                    <div class="lamp-texts">
+                    <div class="lamp-texts" id="lamp-text-two">
                         <p>Aproximação</p>
                         <p>Através do sensor de presença cada lâmpada irá acender em potência máxima, de acordo com a movimentação do ambiente.</p>
                     </div>
@@ -135,8 +136,8 @@
     <footer class="footer">
         <div class="container">
             <div class="div-footer1">
-                <p class="footer-direitos">Todos os direitos reservados para o site TecShine         ©2021 </p>
                 <p class="footer-localizacao">Rua Haddock Lobo, 595 - 3º andar - Bela Cintra, SP</p>
+                <p class="footer-direitos">Todos os direitos reservados para o site TecShine         ©2021 </p>
             </div>
             <div class="div-footer2">
                 <img src="./imagens/instagram.svg" alt="" class="redes-sociais">
