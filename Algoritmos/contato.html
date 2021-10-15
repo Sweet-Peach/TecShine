@@ -1,51 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./contato tecshine.css">
+    <link rel="stylesheet" href="./contato.css">
+    <link rel="shortcut icon" href="./images/Component 9.png" type="image/x-icon">
     <title>Contato</title>
 </head>
 <body>
     <div class="header">
         <div class="container">
-            <img class="logo" src="./Component 9.png">
-            <h1>TECSHINE</h1>
+            <div class="logo">
+                <img src="./images/Component 9.png">
+                <h1>TECSHINE</h1>
+            </div>
             <ul class="navbar">
                 <li><a href="#"> Home</a></li>
                 <li><a href="#"> Sobre</a></li>
                 <li><a href="#"> Contato</a></li>
-                <li class="click"><a href="#"> Cadastre-se</a></li>
+                <li><a href="#"> <button> Cadastre-se</button></a></li>
                 <li><a href="#"> Login</a></li>
             </ul>
             </div>
         </div>
-    </div>
+     </div>
     <div class="container">
         <div class="box">
         <h1>Fala que a gente te escuta!</h1>
        <h3>ficou com alguma dúvida, tem alguma crítica ou sugestão? Preenche esse formulário rapidinho e a gente entra em contato com você.</h3>
-            <div class="inputs"> 
-                <input type="text" class="ipt" placeholder="Nome completo"> 
-                <input type="text" id="telefone" class="ipt" placeholder="Número do celular">  
-                <input type="text" id="email" class="ipt" placeholder="E-mail"> 
-                <input type="text" class="ipt_msg" placeholder="Escreva sua mensagem">
-                <br>
-                <button type="button" onclick="verificar()">Enviar</button>
+            <div class="contact"> 
+                <form>
+                    <input type="text" class="ipt" placeholder="Nome completo"> 
+                    <input type="text" id="telefone" class="ipt" placeholder="Número do celular"> 
+                    <input type="text" id="email" class="ipt" placeholder="E-mail"> 
+                    <input type="text" class="ipt_msg" placeholder="Escreva sua mensagem">
+                    <button type="button" onclick="verificar()">Enviar</button>
+                </form>
             </div>
-            <img src="./imagem contato.png" alt="">
+            <img src="./images/imagem contato.png" alt="">
         </div>
-    </div>
+    </div> 
     <div class="footer">
-        <div class="container">
-            <span>Todos os direitos reservados</span>
-            <span>TECSHINE @2021</span>
-                <img src="./instagram 1.png" alt="">
-                <img src="./facebook 1.png" alt="">
-                <img src="./twitter 1.png" alt="">
-            </div>
-        </div>
+        <span>Todos os direitos reservados TECSHINE @2021</span>
+            <div class="sociais">
+                 <img src="./images/instagram 1.png" alt="">
+                 <img src="./images/facebook 1.png" alt="">
+                 <img src="./images/twitter 1.png" alt="">
+             </div>
+         </div>
     </div>
 </body>
 </html>
@@ -62,4 +65,4 @@
         }
     }
     }
-</script>
+</script> 
