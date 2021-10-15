@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&family=Chivo:wght@300;400;700;900&display=swap');
+
 body{
     padding: 0;
     margin: 0;
     background-color: #FFFFFF;
-    font-family: 'Chivo' sans-serif;
+    font-family: Archivo;
     font-weight: 300;
+}
+
+*{
+    z-index: 1;
 }
 
 .container{
@@ -12,6 +18,8 @@ body{
     margin: 0 auto;
     align-items: center;
     justify-content: space-evenly ;
+    
+
 }
 .header{
     color: #414141;
@@ -20,6 +28,7 @@ body{
     top: 0;
     background-color: #FFFFFF;
     height: 60px;
+    z-index: 2;
 }
 
 .header .container{
@@ -31,6 +40,7 @@ body{
     font-weight: lighter;
     margin: 0;
     height: max-content;
+    color: #414141;
 }
 
 .imagemlogo {
@@ -45,6 +55,7 @@ button{
     width: 100px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px #414141;
+    font-family: Archivo;
 }
 
 
@@ -55,15 +66,17 @@ button{
     align-items: center;
     justify-content: space-evenly;
     list-style: none;
+    color: #414141;
 }
 
 .header a {
     text-decoration: none;
     color: #414141;
+    background-color: #FFFFFF;
 }
 
 .social {
-    width: 80%;
+    width: 70%;
     height: 400px;
     background: linear-gradient(0deg, #FFD600, #FFD600);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(255, 255, 255, 0.29);
@@ -74,18 +87,9 @@ button{
 
 .social p{
     margin: 0;
-    padding: 0;
-    font-size: 15px;
-    font-family: 'Chivo' sans-serif;
-    font-weight: lighter;
-
-}
-
-.social p{
-    margin: 0;
     padding-right:  10px;
     font-size: 18px;
-    font-family: 'Chivo' sans-serif;
+    font-family: Archivo;
     color: #414141;
    
 }
@@ -100,15 +104,18 @@ button{
     margin: 0;
     padding: 0;
     font-size: 20px;
-    font-weight: 700;
-    font-family: 'Chivo' sans-serif;
+    font-weight: 400;
+    font-family: Archivo;
+    color: #263238;
 }
 
 .titulo h2{
     margin: 0;
     padding: 0;
     font-size: 24px;
-    font-family: 'Chivo' sans-serif;
+    font-family: Archivo;
+    font-weight: 500;
+    color: #414141;
 }
 .social .container {
     display: flex;
@@ -121,17 +128,46 @@ button{
 }
 
 .texto{
-    margin: auto 0;
+   margin-left: -70px;
+   height: 250px;
+   font-family: Archivo ;
 }
 
+.texto h4{
+    font-weight: 600;
+    color:#263238;
+}
+.imagem img {
+    position: absolute;
+    height: 80px;
+    left: 880px;
+    top: 90px;
+}
+
+.imagem h4{
+    position: absolute;
+    width: 347px;
+    height: 64px;
+    left: 750px;
+    top: 160px;
+    font-family: Archivo;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 29px;
+    text-align: center;
+    color: #263238;
+
+}
  .boxes {
     display: flex;
-    height: 100px;
+    height: 40px;
+    margin-left: -250px;
     flex-direction: row;
     flex-wrap: wrap;
     align-self: center;
     border-radius: 50%;
     justify-content: center;
+    margin-top: 0;
 
 }
 
@@ -142,9 +178,16 @@ button{
 
 
 .social .box img {
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     border-radius: 50%;    
+}
+
+.social .box h3{
+    font-family: Archivo;
+    font-weight: 200;
+    font-size: 15px;
+    margin-left: 15px;
 }
 
 
