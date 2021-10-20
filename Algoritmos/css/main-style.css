@@ -36,14 +36,20 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    transition: 1s;
 }
+
 
 
 #div-header-container-logo .img {
     height: 40px;
+    transition: 2s;
+    content: url(../imagens/lampada-apagada.png);
 }
 
+#div-header-container-logo .img:hover {
+    transition: 2s;
+    content: url(../imagens/lampada-acesa.png);
+}
 
 #div-header-container-logo h1 {
     margin-left: 8px;
@@ -54,7 +60,13 @@
     line-height: 33px;
     text-align: center;
     color: #414141;
+    transition: 0.2s;
 }
+
+#div-header-container-logo h1:hover{
+    color: #FFD600;
+}
+
 
 .header-nav-bar {
     display: flex;

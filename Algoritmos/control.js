@@ -1,14 +1,6 @@
 const form = document.querySelector(".display-form")
 const msg = document.querySelector(".display-msg")
 
-function headerLampAcesa(x,y) {
-    x.src = './imagens/lampada-acesa.png'
-    y.style.color = "#FFD600"
-}
-function headerLampApagada(x,y) {
-    x.src = './imagens/lampada-apagada.png'
-    y.style.color = "#414141"
-}
 
 function calc_simulacao(){
     document.querySelector(".display-form").style.display = "none";
