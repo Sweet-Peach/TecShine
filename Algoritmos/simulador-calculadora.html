@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        input {
+width: 50%;
+        }
+    </style>
+    <title>Simulação</title>
+</head>
+<body>
+   <br><br> 
+   <center> <font size= "15" face="Calibri Light" style="color: #47B0D7;">Simulador</font></center><br>
+<div id="div_calculadora" style="display: block;  margin-left: 30%; text-align: justify;"> 
+     <font face="Calibri Light">Preencha os campos abaixo para ter acesso à comparação de consumo sem e com o nosso serviço.</font><br><br>      
+      <font face="Calibri">Quantidade média de horas que fica ligada por dia: <br><input id="hora_media" type="text" placeholder="Insira aqui"> <br> <br>  
+      Quantidade de lâmpadas: <br> <input id="quant_lampadas" type="text" placeholder="Insira aqui"> <br> <br>   
+      Quantidade média de pessoas que passam pela lâmpada por dia:  <br><input id="pessoas_media" type="text" placeholder="Insira aqui"> <br> <br>
+      Voltagem da lâmpada em Watts: <br> <input id="voltagem_watts" type="text" placeholder="(ex:50W)"><br> <br>
+   <button onclick="calc_simulacao()"> Simular </button></font>
+</div>  
+<div id="div_tela_simulacao" style="display: none;"> 
+    <font face="Calibri">
+    <b style="color: #BC3A34;">SEM A SOLUÇÃO </b>
+    <p face="Calibri"> <p>Por mês, as <b id="span_qtd_lampadas"> 0 </b> lampadas irão gastar <b id="span_kwh_normal" style="color: #BC3A34;">0</b>KWh, na sua conta de luz essa quantidade resulta no valor de R$<b id="span_valor_normal" style="color: #BC3A34;">0</b>.</p>
+    <b style="color: #47B0D7;">COM A SOLUÇÃO </b>
+    <p>A mesma quantidade de lampadas irão gastar <b id="span_kwh" style="color: #47B0D7;"> 0 </b> KWh , na sua conta de luz essa quantidade resulta no valor de R$ <b id="span_valor" style="color: #47B0D7;"> 0 </b> tendo uma economia de <b id="span_porcentagem"style="color: #47B0D7;"> 0 </b>.</p>
+    <div id="div_barra" style = "height:30px; background-color: #47B0D7;" ></div> 
+    <p><b>OBS: considerando que o valor do kwh seja <b id="valor_KWH"> 0 </b> e não aplicando o valor de qualquer bandeira.</b></p>
+     <p>**com base em 30 dias ligadas, por 15 segundos quando acionada! </p></font>
+<div>
+</body>
+</html>
+<script>
+    function calc_simulacao(){
+      div_calculadora.style.display = "none";
+      div_tela_simulacao.style.display = "block";
+  
+      var horas = hora_media.value;
+      var quantlampadas = quant_lampadas.value;
+      var quantAcionamentos = pessoas_media.value;
+      var watts = voltagem_watts.value;
+      var quantKWPorAcionamento = watts / 60 / 60 * 15 / 1000;
+// WATTS Potencia da lampadA   // 60 Conversão de horas para minutos // 60 Conversão de minutos para segundos // Gasto em watts por 15 segundos // 1000 Conversão de watts para kW  
+     
+      var kwh = (watts * horas * quantlampadas * 30 ) / 1000; // Define a quantidade de KWh que as lampadas gastam // 30 dias 
+  
+      var moeda = 0.928965517; // Valor por KWH na conta de luz
+  
+      span_qtd_lampadas.innerHTML = quantlampadas;
+  
+      span_kwh_normal.innerHTML = kwh.toFixed(2);
+  
+      span_valor_normal.innerHTML = (kwh * moeda).toFixed(2);
+  
+      span_kwh.innerHTML = ((kwh * 0.3) -         // KWH que gasta por mês numa intesidade de 30% da capacidade da potencia da lampada
+                           (quantKWPorAcionamento * //quantidade de watts que a lampada gasta a cada 15s(tempo de acionamento) 
+                           quantAcionamentos))      //quantidade de acionamentos
+                           .toFixed(2);
+  
+      span_valor.innerHTML = ((kwh * 0.3 - 
+      quantKWPorAcionamento * quantAcionamentos) * moeda).toFixed(2);
+  
+      span_porcentagem.innerHTML = (((kwh * 0.3 - quantKWPorAcionamento * quantAcionamentos) * moeda) / (kwh * moeda) * 100).toFixed(1) + '%';
+      div_barra.style.width =`${span_porcentagem.innerHTML}`;
+  
+      valor_KWH.innerHTML = moeda.toFixed(2);
+    }
+    </script>
