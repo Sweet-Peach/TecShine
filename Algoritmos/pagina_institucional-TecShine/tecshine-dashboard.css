@@ -50,7 +50,7 @@ body{
 }
 
 button {
-    background-color: #FFD600;
+    background-color: rgb(255, 214, 0);
     color: #414141;
     height: 28px;
     width: 100px;
@@ -143,11 +143,12 @@ a:hover{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #eaeaea;
+    background-color: #616161ab;
     width: 45%;
     height: 35vh;
     margin: 10px;
     padding: 5px;
+    color:#FFD600;
   }
 
 /* FOOTER */

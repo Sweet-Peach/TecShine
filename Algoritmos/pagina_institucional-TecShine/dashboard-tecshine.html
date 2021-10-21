@@ -68,25 +68,37 @@
     var myChartConsumo = new Chart(ctx, { /*pegeui  um novo grafico*/
         type: 'bar', 
         data: {
-            labels: ['7:00', '10:00', '13:00', '16:00', '19:00', '22:00'], /*legendas do grafico*/
+            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun','Jul','Ago','Set','Out','Nov','Dez'], /*legendas do grafico*/
             datasets: [{
                 label: 'Consumo Mensal(kWh)', /*titulo*/
-                data: [12, 19, 3, 5, 2, 3], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 214, 0, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)', 
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)', 
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -105,45 +117,45 @@
     var myChartSolucao = new Chart(ctx, { /*pegeui  um novo grafico*/
         type: 'bar', /*tipo barra*/
         data: {
-            labels: ['colisa', 'tetra', 'coridora', 'molinesia', 'arco-iris', 'betta'], /*legendas do grafico*/
+            labels: ['01/01/2021', '07/01/2021', '14/01/2021', '21/01/2021', '28/01/2021', '05/02/2021'], /*legendas do grafico*/
             datasets: [{
-                label: 'Quantidade Espécies', /*titulo*/
-                data: [12, 19, 3, 5, 2, 3], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                label: 'Sensor 1', /*titulo*/
+                data: [120, 190, 30, 50, 20, 30], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 214, 0, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
                 ],
                 borderWidth: 1
             },{
-                label: 'Quantidade Espécies', /*titulo*/
-                data: [12, 19, 3, 5, 2, 3], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                label: 'Sensor 2', /*titulo*/
+                data: [20, 90, 130, 50, 120, 100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(238, 173, 45, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -162,25 +174,25 @@
     var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
         type: 'line', 
         data: {
-            labels: ['jovem', 'adulto', 'idoso'], /*legendas do grafico*/
+            labels: ['06-09h', '09-12h', '12-15h','15-18h','18-21h','21-00h'], /*legendas do grafico*/
             datasets: [{
                 label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
-                data: [12, 19, 3], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                data: [120, 190, 120, 300, 200, 20], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 214, 0, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -199,45 +211,69 @@
     var myChartComparacao = new Chart(ctx, { /*pegeui  um novo grafico*/
         type: 'bar', 
         data: {
-            labels: ['jovem', 'adulto', 'idoso'], /*legendas do grafico*/
+            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun','Jul','Ago','Set','Out','Nov','Dez'], /*legendas do grafico*/
             datasets: [{
-                label: 'Com a solução e Sem solução', /*titulo não tem no pie o tipo vira a legenda*/
-                data: [12, 19, 3], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                label: 'Com a solução', /*titulo não tem no pie o tipo vira a legenda*/
+                data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 214, 0, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)', 
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)',
+                    'rgba(255, 214, 0, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)', 
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
                 ],
                 borderWidth: 1
             },{
-                label: 'Com a solução e Sem solução', /*titulo não tem no pie o tipo vira a legenda*/
-                data: [12, 19, 3], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                label: 'Sem solução', /*titulo não tem no pie o tipo vira a legenda*/
+                data: [1500, 2500, 2200, 3500, 2200, 2300, 3200, 2900, 3300, 2300, 2100, 3100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(238, 173, 45, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)', 
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)',
+                    'rgba(238, 173, 45, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)', 
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)'
                 ],
                 borderWidth: 1
             }]
