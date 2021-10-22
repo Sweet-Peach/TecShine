@@ -97,13 +97,16 @@ a:hover{
     padding-bottom: 20px;
     /* height: 509px; */
     width: 1109px;
-    margin: 20px 254px 104px 254px;
+    margin: 63px 254px 77px 254px;
     align-self:center;
     border-radius: 50px;
 }
 .banner .container{
-    margin:64px;
+    /* margin:64px; */
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     /* flex-direction: column;  */
     /* width: 500px;
@@ -125,6 +128,12 @@ a:hover{
     justify-content: center;
     align-items: center;
 }
+
+.graph h4{
+    margin: 0;
+    padding: 0;
+    margin-top: -35px;
+}
 .banner .container p{
     font-size: 50px;
     font-weight: lighter;
@@ -139,14 +148,16 @@ a:hover{
     position: absolute;
     height: 430px; 
 }
+
 .graph {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: #616161ab;
+    background-color: rgba(97, 97, 97, 0.4);
     width: 45%;
     height: 35vh;
-    margin: 10px;
+    margin: 20px 10px;
     padding: 5px;
     color:#FFD600;
   }

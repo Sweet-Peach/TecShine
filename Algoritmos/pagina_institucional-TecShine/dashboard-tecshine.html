@@ -36,15 +36,19 @@
 
               <div class="div_graficos">
                   <div class="graph">
+                      <h4 style="color: #000;">Consumo Mensal</h4>
                     <canvas id="myChartConsumo" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
                   </div>
                   <div class="graph">
+                    <h4 style="color: #000;">Comparação entre Sensores</h4>
                     <canvas id="myChartSolucao" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
                   </div>
                   <div class="graph">
+                    <h4 style="color: #000;">Movimentação por Período</h4>
                     <canvas id="myChartMovimentacao" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
                   </div>
                   <div class="graph">
+                    <h4 style="color: #000;">Comparação com/sem solução</h4>
                     <canvas id="myChartComparacao" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
                   </div>
               </div>
@@ -73,18 +77,18 @@
                 label: 'Consumo Mensal(kWh)', /*titulo*/
                 data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 214, 0, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)', 
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)'
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)', 
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
                 ],
                 borderColor: [
                     'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
@@ -122,12 +126,12 @@
                 label: 'Sensor 1', /*titulo*/
                 data: [120, 190, 30, 50, 20, 30], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 214, 0, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)'
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
                 ],
                 borderColor: [
                     'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
@@ -142,12 +146,12 @@
                 label: 'Sensor 2', /*titulo*/
                 data: [20, 90, 130, 50, 120, 100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(238, 173, 45, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)'
+                    'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)'
                 ],
                 borderColor: [
                     'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
@@ -179,12 +183,12 @@
                 label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
                 data: [120, 190, 120, 300, 200, 20], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 214, 0, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)'
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
                 ],
                 borderColor: [
                     'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
@@ -216,18 +220,18 @@
                 label: 'Com a solução', /*titulo não tem no pie o tipo vira a legenda*/
                 data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(255, 214, 0, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)', 
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)',
-                    'rgba(255, 214, 0, 0.2)'
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)', 
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
                 ],
                 borderColor: [
                     'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
@@ -248,18 +252,18 @@
                 label: 'Sem solução', /*titulo não tem no pie o tipo vira a legenda*/
                 data: [1500, 2500, 2200, 3500, 2200, 2300, 3200, 2900, 3300, 2300, 2100, 3100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
                 backgroundColor: [
-                    'rgba(238, 173, 45, 0.2)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)', 
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)',
-                    'rgba(238, 173, 45, 0.2)'
+                    'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)', 
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)'
                 ],
                 borderColor: [
                     'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
