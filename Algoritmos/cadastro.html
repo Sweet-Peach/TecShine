@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="Text/JavaScript" src="./control.js"></script>
+    <link rel="stylesheet" href="./css/main-style.css">
+    <link rel="stylesheet" href="./css/cadastro.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="./index.html" class="header-acesso-index" id="header_logo_div">
+                    <div id="div-header-container-logo">
+                        <img src="./img/Component 3.png" alt="" class="img" id="header_img">
+                        <h1 class="logo-text" id="header_titulo">TECSHINE</h1>
+                    </div>
+                </a>
+                <ul class="header-nav-bar">
+                    <li id="li-left"><a href="./index.html" class="nav-bar-li">Home</a></li>
+                    <li id="li-center"><a href="./about-us.html" class="nav-bar-li">Sobre</a></li>
+                    <li id="li-right"><a href="./contato-pronta.html" class="nav-bar-li">Contato</a></li>
+                </ul>
+                <div class="div-header-container-login-cadastro">
+                    <a href="./telaCadastro-pronta.html" id="btn-cadastrar">Cadastre-se</a>
+                    <a href="./login-pronta.html" id="btn-login">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="cadastro">
+        <div class="container">
+            <div class="cadastro-container">
+                <div class="cadastro-form">
+                    <div class="textos">
+                        <h1 class="titulo">CADASTRO</h1>
+                        <p>Não é  cliente? Faça seu cadastro!</p>
+                    </div>
+                    <div class="form">
+                        <div class="row-1 row">
+                            <label for="inp-razaosocial" >*Razão Social:</label><input type="text" name="inp-razaosocial" id="inp-razaosocial" >
+                            <label for="inp-cnpj" id="label-inp-cnpj">*CNPJ:</label><input type="text" name="inp-cnpj" id="inp-cnpj" >
+                        </div>
+                        <div class="row-2 row">
+                            <label for="inp-resp">Nome do Responsável: </label><input type="text" name="inp-resp" id="inp-resp" >
+                            <label for="inp-tel" id="label-inp-tel">*Telefone</label><input type="text" name="inp-tel" id="inp-tel" >
+                        </div>
+                        <div class="row-3 row">
+                            <label for="inp-cep">*CEP:</label><input type="text" name="inp-cep" id="inp-cep"  onchange="cepFill(this.value)">
+                            <label for="inp-end">*Endereço:</label><input type="text" name="inp-end" id="inp-end" >
+                            <label for="inp-n">*Número:</label><input type="text" name="inp-n" id="inp-n" >
+                        </div>
+                        <div class="row-4 row"><label for="inp-complemento">Complemento:</label><input type="text" name="inp-complemento" id="inp-complemento" ></div>
+                        <div class="row-5 row">
+                            <label for="inp-senha">*Senha:</label><input type="text" name="inp-senha" id="inp-senha" >
+                            <label for="inp-senhaconfirm">Confirmar Senha:</label><input type="text" name="inp-senhaconfirm" id="inp-senhaconfirm" >
+                        </div>
+                        
+                    </div>
+                    <button onclick="validar()">Vamos lá!</button>
+                </div>
+                <div class="img">
+                    <img src="./img/Group 10.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="div-footer1">
+                <p class="footer-localizacao">Rua Haddock Lobo, 595 - 3º andar - Bela Cintra, SP</p>
+                <p class="footer-direitos">Todos os direitos reservados para o site TecShine         ©2021 </p>
+            </div>
+            <div class="div-footer2">
+                <img src="./img/instagram 1.png" alt="" class="redes-sociais">
+                <img src="./img/facebook 1.png" alt="" class="redes-sociais">
+                <img src="./img/twitter 1.png" alt="" class="redes-sociais">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
