@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECSHINE - Dashboard</title>
+    <link rel="stylesheet" href="./tecshine-dashboard.css">
+    <link rel="shortcut icon" href="./images/image 17.png" type="image/x-icon">
+    
+    <link rel = "preconnect" href = "https://fonts.googleapis.com">
+    <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
+    <link href = "https://fonts.googleapis.com/css2?family=Chivo:wght@300&display=swap" rel ="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="./images/lampada 3.png" alt="imagem logo lâmpada" class="imagelogo">
+            <img src="./images/Component 9.png" alt="imagem logo lâmpada" class="imagelogo2">
+            <span class="titulo">TECSHINE</span>
+            <ul class="navbar">
+                <li> <a href="./index.html"> Home </a></li>
+                <li> <a href="./about-us.html"> Sobre </a> </li>
+                <li> <a href="./contato-pronta.html"> Contato </a> </li>
+                <li> <a href="./cadastro.html"> <button onclick="cadastre()"> Cadastre-se </button></a></li>
+                <li class="selecionado"> Login </li>
+            </ul>
+        </div> 
+    </div>
+    <div class="banner">
+        <div class="container">
+            <p>Acompanhe os Gráficos</p>
+
+              <div class="div_graficos">
+                  <div class="graph">
+                      <h4 style="color: #000;">Consumo Mensal</h4>
+                    <canvas id="myChartConsumo" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
+                  </div>
+                  <div class="graph">
+                    <h4 style="color: #000;">Comparação entre Sensores</h4>
+                    <canvas id="myChartSolucao" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
+                  </div>
+                  <div class="graph">
+                    <h4 style="color: #000;">Movimentação por Período</h4>
+                    <canvas id="myChartMovimentacao" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
+                  </div>
+                  <div class="graph">
+                    <h4 style="color: #000;">Comparação com/sem solução</h4>
+                    <canvas id="myChartComparacao" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
+                  </div>
+              </div>
+            <!-- <img src="images/Character11 1.png" alt="imagem_login" class="img_login">  -->   
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <span>Todos os direitos reservados ao site TecShine </span>
+            <span>©2021</span>
+            <img src="./images/instagram 1.png" alt="logo instagram" >
+            <img src="./images/facebook 1.png" alt="logo facebook" >
+            <img src="./images/twitter 1.png" alt="logo twitter" >
+        </div>
+    </div>  
+</body>
+</html>
+<script>
+    var ctx = document.getElementById('myChartConsumo').getContext('2d'); /*pega o elemento com id myChart*/
+    var myChartConsumo = new Chart(ctx, { /*pegeui  um novo grafico*/
+        type: 'bar', 
+        data: {
+            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun','Jul','Ago','Set','Out','Nov','Dez'], /*legendas do grafico*/
+            datasets: [{
+                label: 'Consumo Mensal(kWh)', /*titulo*/
+                data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)', 
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)', 
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+          maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+            scales: {
+                y: {
+                    beginAtZero: true /*grafico começa do zero*/
+                }
+            }
+        }
+    });
+  
+    var ctx = document.getElementById('myChartSolucao').getContext('2d'); /*pega o elemento com id Bar*/
+    var myChartSolucao = new Chart(ctx, { /*pegeui  um novo grafico*/
+        type: 'bar', /*tipo barra*/
+        data: {
+            labels: ['01/01/2021', '07/01/2021', '14/01/2021', '21/01/2021', '28/01/2021', '05/02/2021'], /*legendas do grafico*/
+            datasets: [{
+                label: 'Sensor 1', /*titulo*/
+                data: [120, 190, 30, 50, 20, 30], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
+                ],
+                borderWidth: 1
+            },{
+                label: 'Sensor 2', /*titulo*/
+                data: [20, 90, 130, 50, 120, 100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+          maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+            scales: {
+                y: {
+                    beginAtZero: true /*grafico começa do zero*/
+                }
+            }
+        }
+    });
+  
+    var ctx = document.getElementById('myChartMovimentacao').getContext('2d'); /*pega o elemento com id Bar*/
+    var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
+        type: 'line', 
+        data: {
+            labels: ['06-09h', '09-12h', '12-15h','15-18h','18-21h','21-00h'], /*legendas do grafico*/
+            datasets: [{
+                label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
+                data: [120, 190, 120, 300, 200, 20], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+          maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+            scales: {
+                y: {
+                    beginAtZero: true /*grafico começa do zero*/
+                }
+            }
+        }
+    });
+
+    var ctx = document.getElementById('myChartComparacao').getContext('2d'); /*pega o elemento com id Bar*/
+    var myChartComparacao = new Chart(ctx, { /*pegeui  um novo grafico*/
+        type: 'bar', 
+        data: {
+            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun','Jul','Ago','Set','Out','Nov','Dez'], /*legendas do grafico*/
+            datasets: [{
+                label: 'Com a solução', /*titulo não tem no pie o tipo vira a legenda*/
+                data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)', 
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)', 
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
+                ],
+                borderWidth: 1
+            },{
+                label: 'Sem solução', /*titulo não tem no pie o tipo vira a legenda*/
+                data: [1500, 2500, 2200, 3500, 2200, 2300, 3200, 2900, 3300, 2300, 2100, 3100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)', 
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)', 
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+          maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+            scales: {
+                y: {
+                    beginAtZero: true /*grafico começa do zero*/
+                }
+            }
+        }
+        
+    });
+    </script>
