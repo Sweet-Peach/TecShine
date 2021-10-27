@@ -36,6 +36,10 @@ CREATE TABLE tb_condominio (
   FOREIGN KEY (fk_adm) REFERENCES tb_administradora (id_adm)
 )auto_increment = 1001;
 
+insert into tb_condominio (nome_razao_social_cond, nome_cond, telefone_cond, email_cond, 
+cep, endereco, nuemro, complemento, fk_adm)
+values(),
+();
 -- -----------------------------------------------------
 -- Table tb_usuario
 -- -----------------------------------------------------
@@ -49,6 +53,9 @@ CREATE TABLE tb_usuario_login(
   FOREIGN KEY (fk_adm) REFERENCES tb_administradora (id_adm)
 );
 
+insert into tb_usuario_login (cnpj_usuario, senha_usuario, fk_cond, fk_adm)
+values(),
+();
 -- -----------------------------------------------------
 -- Table tb_espaco
 -- -----------------------------------------------------
@@ -60,6 +67,9 @@ CREATE TABLE tb_espaco (
   FOREIGN KEY (fk_cond) REFERENCES tb_condominio (id_cond)
 )auto_increment = 2001;
 
+insert into tb_espaco (nome_espaco, andar, fk_cond)
+values(),
+();
 
 -- -----------------------------------------------------
 -- Table tb_sensores
@@ -71,6 +81,9 @@ CREATE TABLE tb_sensores (
   FOREIGN KEY (fk_espaco) REFERENCES tb_espaco (id_espaco)
 )auto_increment = 3001;
 
+insert into tb_sensores (nome_sensor, fk_espaco)
+values(),
+();
 -- -----------------------------------------------------
 -- Table tb_movimentacao
 -- -----------------------------------------------------
@@ -81,6 +94,10 @@ CREATE TABLE tb_movimentacao (
   fk_sensor INT NOT NULL,
   FOREIGN KEY (fk_sensor) REFERENCES tb_sensores (id_sensor)
 )auto_increment = 10;
+
+insert into tb_movimentacao (horario, ativacao, fk_sensor)
+values(),
+();
 
 select * from tb_administradora;
 select * from tb_condominio;
