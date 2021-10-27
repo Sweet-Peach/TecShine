@@ -1,3 +1,23 @@
+.div-header-container-login-cadastro #btn-login{
+    background-color: #414141;
+    border-radius: 10px;    
+    font-family: Chivo;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    /* identical to box height */
+    text-align: center;
+    color: #FFFFFF;
+    transition: 0.2s;
+    padding: 2px 40px;
+}
+
+.div-header-container-login-cadastro #btn-login:hover{
+    color: #414141;
+    background-color: #ffd000;
+    font-size: 15px;
+}
+
 .cadastro{
     margin: 60px auto;
 }
@@ -86,12 +106,12 @@
     width: 250px;
 }
 
-#inp-cnpj, #inp-tel, #inp-senha, #inp-senhaconfirm{
+#inp_cnpj, #inp-tel, #inp-senha, #inp-senhaconfirm{
     width: 140px;
 }
 
 
-#inp-tel, #inp-cnpj, #label-inp-cnpj, #label-inp-tel{
+#inp-tel, #inp_cnpj, #label-inp-cnpj, #label-inp-tel{
     margin-left: 35px;
 }
 
@@ -121,6 +141,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 11px;
     transition: 0.1s;
+    z-index: 1;
 }
 
 .cadastro-form button:hover{

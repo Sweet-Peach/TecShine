@@ -1,3 +1,24 @@
+.div-header-container-login-cadastro #btn-cadastrar{
+    background-color: #ffd000;
+    border-radius: 10px;    
+    font-family: Chivo;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    /* identical to box height */
+    text-align: center;
+    color: #414141;
+    transition: 0.2s;
+    pointer-events: none;
+    cursor: default;
+}
+
+.div-header-container-login-cadastro #btn-cadastrar:hover{
+    color: #414141;
+    background-color: #ffd000;
+}
+
+
 .clc{
     margin: 50px 0 50px 0;
     width: 100%;

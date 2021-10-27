@@ -75,7 +75,7 @@
     z-index: 3;
 }
 
-.form #ipt_senha, #ipt_cnpj {
+.form #inp_senha, #inp_cnpj {
     width: 100%;
 }
 
@@ -97,6 +97,10 @@
     height: 20px;
     -webkit-appearance: none;
     outline: none;  
+}
+
+.form select, option{
+    width: 100%;
 }
 
 .form input:hover{

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECSHINE - Login </title>
+    <link rel="stylesheet" href="./css/main-style.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="shortcut icon" href="./images/image 17.png" type="image/x-icon">
+    <script type="Text/JavaScript" src="./control.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="./index.html" class="header-acesso-index" id="header_logo_div">
+                    <div id="div-header-container-logo">
+                        <img src="./img/Component 3.png" alt="" class="img" id="header_img">
+                        <h1 class="logo-text" id="header_titulo">TECSHINE</h1>
+                    </div>
+                </a>
+                <ul class="header-nav-bar">
+                    <li id="li-left"><a href="./index.html" class="nav-bar-li">Home</a></li>
+                    <li id="li-center"><a href="./about-us.html" class="nav-bar-li">Sobre</a></li>
+                    <li id="li-right"><a href="./contato.html" class="nav-bar-li">Contato</a></li>
+                </ul>
+                <div class="div-header-container-login-cadastro">
+                    <a href="./cadastro.html" id="btn-cadastrar">Cadastre-se</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="login">
+        <div class="container">
+            <div class="login-container">
+                <div class="textos">
+                    <p>LOGIN</p>
+                    <label>Já é cliente? Faça seu login para acessar suas informações.</label>
+                </div>
+                <div class="img">
+                    <img src="./img/Character11 1.png" alt="imagem_login" class="img_login"> 
+                </div>
+                <div class="form">
+                    <p class="form">CNPJ:</p>
+                    <input id="inp_cnpj" type="text" placeholder="xx.xxx.xxx/0001-xx" oninput='maskCNPJ(this.value,inp_cnpj)'>
+                    <p class="form">Senha:</p>
+                    <input id="inp_senha" type="password" style="-webkit-text-security:circle" placeholder="********" >
+                    <label class="box-check">Código de acesso:</label>
+                    <select id="ipt_cod" class="ipt_cod"><option value="100">Administrador</option> <option value="101">Condomínio</option></select>
+                </div>
+                <button onclick="entrar()"> Entrar </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="div-footer1">
+                <p class="footer-direitos">Todos os direitos reservados para o site TecShine         ©2021 </p>
+            </div>
+            <div class="div-footer2">
+                <img src="./img/instagram 1.png" alt="" class="redes-sociais">
+                <img src="./img/facebook 1.png" alt="" class="redes-sociais">
+                <img src="./img/twitter 1.png" alt="" class="redes-sociais">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

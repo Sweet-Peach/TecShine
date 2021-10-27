@@ -2,16 +2,18 @@ const form = document.querySelector(".display-form")
 const msg = document.querySelector(".display-msg")
 let empresa;
 
-function Usuario(social, cnpj, responsavel, telefone, cep, endereco, numero, complemento, senha) {
-    this.social = social;
-    this.responsavel = responsavel;
-    this.cnpj = cnpj;
-    this.telefone = telefone;
-    this.cep = cep;
-    this.endereco = endereco;
-    this.numero = numero;
-    this.complemento = complemento;
-    this.senha = senha;
+class Usuario {
+    constructor(social, cnpj, responsavel, telefone, cep, endereco, numero, complemento, senha) {
+        this.social = social;
+        this.responsavel = responsavel;
+        this.cnpj = cnpj;
+        this.telefone = telefone;
+        this.cep = cep;
+        this.endereco = endereco;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.senha = senha;
+    }
 }
 
 function calc_simulacao(){
@@ -57,7 +59,7 @@ function voltar() {
 
 function validar() {
     let razaoSocial = document.getElementById('inp-razaosocial').value
-    let cnpj = document.getElementById('inp-cnpj').value
+    let cnpj = document.getElementById('inp_cnpj').value    
     let responsavel = document.getElementById('inp-resp').value
     let telefone = document.getElementById('inp-tel').value
     let cep = document.getElementById('inp-cep').value
@@ -76,21 +78,27 @@ function validar() {
     telefone) 
     {
         document.getElementById("inp-razaosocial").style.borderBottom = "solid 2px green";
-        document.getElementById("inp-cnpj").style.borderBottom = "solid 2px green";
+        document.getElementById("inp_cnpj").style.borderBottom = "solid 2px green";
         document.getElementById("inp-end").style.borderBottom = "solid 2px green";
         document.getElementById("inp-n").style.borderBottom = "solid 2px green";
-        
-
-        if (cnpj.length == 14) {
+        if (cnpj.length == 18) {
+            console.log('cnpj ok', '')
             if (telefone.length == 11 || telefone.length == 10) {
+                console.log('telefone ok', '')
                 document.getElementById("inp-tel").style.borderBottom = "solid 2px green";
                 if (cep.length == 8) {
+                    console.log('cep ok', '')
                     document.getElementById("inp-cep").style.borderBottom = "solid 2px green";
+                    console.log("ok")
                     if (senha.length>= 8) {
+                        console.log('senha ok', '')
+                        console.log('ok')
                         document.getElementById("inp-senha").style.borderBottom = "solid 2px green";
                         if (senha == confirm) {
+                            console.log('confirmacao ok', '')
                             empresa = new Usuario(razaoSocial, cnpj, responsavel,telefone, cep,endereco,numero,complemento,senha);
                             document.getElementById("inp-senhaconfirm").style.borderBottom = "solid 2px green";
+                            window.location.replace("admin.html");
                         } else {
                             if (!confirm) {
                                 document.getElementById("inp-senhaconfirm").style.borderBottom = "solid 2px red";
@@ -99,6 +107,7 @@ function validar() {
                             }
                         }
                     } else {
+                        console.log('aff')
                         if (!senha) {
                             document.getElementById("inp-senha").style.borderBottom = "solid 2px red";
                         } else {
@@ -113,17 +122,13 @@ function validar() {
                     }
                 }
             } else {
-                if (!telefone) {
-                    document.getElementById("inp-tel").style.borderBottom = "solid 2px red";
-                } else {
-                    document.getElementById("inp-tel").style.borderBottom = "solid 2px green";
-                }
+                document.getElementById("inp-tel").style.borderBottom = "solid 2px red";
             }
         } else {
             if (!cnpj) {
-                document.getElementById("inp-cnpj").style.borderBottom = "solid 2px red";
+                document.getElementById("inp_cnpj").style.borderBottom = "solid 2px red";
             } else {
-                document.getElementById("inp-cnpj").style.borderBottom = "solid 2px green";
+                document.getElementById("inp_cnpj").style.borderBottom = "solid 2px green";
             }
         }
     } else {
@@ -134,12 +139,12 @@ function validar() {
         }
 
         if (!cnpj) {
-            document.getElementById("inp-cnpj").style.borderBottom = "solid 2px red";
+            document.getElementById("inp_cnpj").style.borderBottom = "solid 2px red";
         } else {
             if (cnpj.length == 14) {
-                document.getElementById("inp-cnpj").style.borderBottom = "solid 2px green";
+                document.getElementById("inp_cnpj").style.borderBottom = "solid 2px green";
             } else{
-                document.getElementById("inp-cnpj").style.borderBottom = "solid 2px red";
+                document.getElementById("inp_cnpj").style.borderBottom = "solid 2px red";
             }
             
         }
@@ -190,7 +195,6 @@ function validar() {
 
 function cepFill(x) {
     let end = document.getElementById("inp-end");
-    this.x = x;
 
     if (x.length == 8) {
         if (x == '08535040') {
@@ -203,3 +207,66 @@ function cepFill(x) {
     }
 }
 
+function maskCNPJ(value , id){
+    var x = value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+
+    id.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
+}
+
+function entrar(){
+    var cnpj = (inp_cnpj.value).replace(/\D/g,'');
+    var senha = inp_senha.value;
+    var cod = ipt_cod.value;
+    /*todos digitos que nao forem digitos(numeros) se torna vazio /D*/
+    /*tira texto de numero /d */
+    /*encontrar qualquer ocorencia ex: %ocorencia% */
+    
+    if (cnpj == "00000000000000" || 
+    cnpj == "11111111111111" || 
+    cnpj == "22222222222222" || 
+    cnpj == "33333333333333" || 
+    cnpj == "44444444444444" || 
+    cnpj == "55555555555555" || 
+    cnpj == "66666666666666" || 
+    cnpj == "77777777777777" || 
+    cnpj == "88888888888888" || 
+    cnpj == "99999999999999"){
+        alert ('CNPJ inválido!');
+        inp_cnpj.focus();
+    }
+    else if ( senha == '' || cnpj == '' || cod == ''){
+        alert ('CNPJ, senha e/ou código em branco, insira os dados');
+    }
+    else if(senha.length > 8){
+        alert("A senha deve conter no máximo 8 digitos!");
+        inp_senha.focus();
+    }
+    else if (cod == 100){
+        window.location.replace("./admin.html");
+    }
+    else if (cod == 101){
+        window.location.replace("./dashboard.html");
+    }
+    else if (cod != 100 || cod !=101) {
+            alert ('Código inválido!');
+            ipt_cod.focus();
+    }
+    else{
+        alert ('CNPJ e/ou senha inválidos!');
+        /*colocar o caminho das telas adm e cond*/
+        // window.location.href = "./site-Institucional01.html"
+    }
+    inp_cnpj.value='';
+    inp_senha.value='';
+    ipt_cod.value='';
+}
+
+function ticket() {
+    document.querySelector('.p2').style.display = "flex"
+    document.querySelector('.p1').style.display = "none"
+}
+
+function inicio() {
+    document.querySelector('.p1').style.display = "flex"
+    document.querySelector('.p2').style.display = "none"
+}

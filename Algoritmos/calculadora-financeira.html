@@ -4,36 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>TecShine</title>
-    <link rel="stylesheet" href="./css/main-style.css">
-    <link rel="stylesheet" href="./css/calculadora.css">
-=======
     <title>Calculadora Financeira</title>
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/calculadora.css">
     <script type="text/JavaScript" src="./control.js"></script>
->>>>>>> ddcbef2fbfd6388d87f5864ebf135fa432d02b74
 </head>
 <body>
     <!-- Cabeçalho padrão do site -->
     <header class="header">
         <div class="container">
             <div class="header-container">
-<<<<<<< HEAD
-                <div id="div-header-container-logo">
-                    <img src="./imagens/lampada-apagada.png" alt="" class="img" onmouseover="this.src='./imagens/lampada-acesa.png';" onmouseout="this.src='./imagens/lampada-apagada.png';">
-                    <h1 class="logo-text">TECSHINE</h1>
-                </div>
-                <ul class="header-nav-bar">
-                    <li id="li-left"><a href="./index.html">Home</a></li>
-                    <li id="li-center"><a href="">Sobre</a></li>
-                    <li id="li-right"><a href="">Contato</a></li>
-                </ul>
-                <div class="div-header-container-login-cadastro">
-                    <a href="" id="btn-cadastrar">Cadastre-se</a>
-                    <a href="" id="btn-login">Login</a>
-=======
                 <a href="./index.html" class="header-acesso-index" id="header_logo_div">
                     <div id="div-header-container-logo">
                         <img src="./img/Component 3.png" alt="" class="img" id="header_img">
@@ -43,12 +23,10 @@
                 <ul class="header-nav-bar">
                     <li id="li-left"><a href="./index.html" class="nav-bar-li">Home</a></li>
                     <li id="li-center"><a href="./about-us.html" class="nav-bar-li">Sobre</a></li>
-                    <li id="li-right"><a href="./contato-pronta.html" class="nav-bar-li">Contato</a></li>
+                    <li id="li-right"><a href="./contato.html" class="nav-bar-li">Contato</a></li>
                 </ul>
                 <div class="div-header-container-login-cadastro">
-                    <a href="./cadastro.html" id="btn-cadastrar">Cadastre-se</a>
-                    <a href="./login-pronta.html" id="btn-login">Login</a>
->>>>>>> ddcbef2fbfd6388d87f5864ebf135fa432d02b74
+                    <a href="./cadastro.html" id="btn-cadastrar">Calculadora</a>
                 </div>
             </div>
         </div>
@@ -86,11 +64,7 @@
                         </div>
                     </div>
                     <div id="clc-img">
-<<<<<<< HEAD
-                        <img src="./imagens/vetor-clc.png" alt="">
-=======
                         <img src="./img/vetor-clc.png" alt="">
->>>>>>> ddcbef2fbfd6388d87f5864ebf135fa432d02b74
                     </div>
                 </div>
             </div>
@@ -101,66 +75,9 @@
     <footer class="footer">
         <div class="container">
             <div class="div-footer1">
-                <p class="footer-localizacao">Rua Haddock Lobo, 595 - 3º andar - Bela Cintra, SP</p>
                 <p class="footer-direitos">Todos os direitos reservados para o site TecShine         ©2021 </p>
             </div>
             <div class="div-footer2">
-<<<<<<< HEAD
-                <img src="./imagens/instagram.svg" alt="" class="redes-sociais">
-                <img src="./imagens/facebook.svg" alt="" class="redes-sociais">
-                <img src="./imagens/twitter.svg" alt="" class="redes-sociais">
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
-<script>
-    const form = document.querySelector(".display-form")
-    const msg = document.querySelector(".display-msg")
-
-    function calc_simulacao(){
-        form.style.display = "none";
-        msg.style.display = "block";
-    
-        var horas = hora_media.value;
-        var quantlampadas = quant_lampadas.value;
-        var quantAcionamentos = pessoas_media.value;
-        var watts = voltagem_watts.value;
-        var quantKWPorAcionamento = watts / 60 / 60 * 15 / 1000;
-        // WATTS Potencia da lampadA   // 60 Conversão de horas para minutos // 60 Conversão de minutos para segundos // Gasto em watts por 15 segundos // 1000 Conversão de watts para kW  
-        
-        var kwh = (watts * horas * quantlampadas * 30 ) / 1000; // Define a quantidade de KWh que as lampadas gastam // 30 dias 
-    
-        var moeda = 0.928965517; // Valor por KWH na conta de luz
-    
-        span_qtd_lampadas.innerHTML = quantlampadas;
-    
-        span_kwh_normal.innerHTML = kwh.toFixed(2);
-    
-        span_valor_normal.innerHTML = (kwh * moeda).toFixed(2);
-    
-        span_kwh.innerHTML = ((kwh * 0.3) -         // KWH que gasta por mês numa intesidade de 30% da capacidade da potencia da lampada
-                            (quantKWPorAcionamento * //quantidade de watts que a lampada gasta a cada 15s(tempo de acionamento) 
-                            quantAcionamentos))      //quantidade de acionamentos
-                            .toFixed(2);
-    
-        span_valor.innerHTML = ((kwh * 0.3 - 
-        quantKWPorAcionamento * quantAcionamentos) * moeda).toFixed(2);
-    
-        span_porcentagem.innerHTML = (((kwh * 0.3 - quantKWPorAcionamento * quantAcionamentos) * moeda) / (kwh * moeda) * 100).toFixed(1) + '%';
-        div_barra.style.width =`${span_porcentagem.innerHTML}`;
-    
-        valor_KWH.innerHTML = moeda.toFixed(2);
-    }   
-
-    function voltar() {
-        form.style.display = "block";
-        msg.style.display = "none";
-    }
-
-</script>
-=======
                 <img src="./img/instagram 1.png" alt="" class="redes-sociais">
                 <img src="./img/facebook 1.png" alt="" class="redes-sociais">
                 <img src="./img/twitter 1.png" alt="" class="redes-sociais">
@@ -169,4 +86,3 @@
     </footer>
 </body>
 </html>
->>>>>>> ddcbef2fbfd6388d87f5864ebf135fa432d02b74
