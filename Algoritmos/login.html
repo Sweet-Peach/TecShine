@@ -69,3 +69,53 @@
     </footer>
 </body>
 </html>
+<script>
+    
+    function entrar(){
+    var cnpj = (inp_cnpj.value).replace(/\D/g,'');
+    var senha = inp_senha.value;
+    var cod = ipt_cod.value;
+    /*todos digitos que nao forem digitos(numeros) se torna vazio /D*/
+    /*tira texto de numero /d */
+    /*encontrar qualquer ocorencia ex: %ocorencia% */
+    
+    if (cnpj == "00000000000000" || 
+    cnpj == "11111111111111" || 
+    cnpj == "22222222222222" || 
+    cnpj == "33333333333333" || 
+    cnpj == "44444444444444" || 
+    cnpj == "55555555555555" || 
+    cnpj == "66666666666666" || 
+    cnpj == "77777777777777" || 
+    cnpj == "88888888888888" || 
+    cnpj == "99999999999999"){
+        alert ('CNPJ inválido!');
+        inp_cnpj.focus();
+    }
+    else if ( senha == '' || cnpj == '' || cod == ''){
+        alert ('CNPJ, senha e/ou código em branco, insira os dados');
+    }
+    else if(senha.length > 8){
+        alert("A senha deve conter no máximo 8 digitos!");
+        inp_senha.focus();
+    }
+    else if (cod == 100){
+        window.location.replace("./admin.html");
+    }
+    else if (cod == 101){
+        window.location.replace("./dashboard.html");
+    }
+    else if (cod != 100 || cod !=101) {
+            alert ('Código inválido!');
+            ipt_cod.focus();
+    }
+    else{
+        alert ('CNPJ e/ou senha inválidos!');
+        /*colocar o caminho das telas adm e cond*/
+        // window.location.href = "./site-Institucional01.html"
+    }
+    inp_cnpj.value='';
+    inp_senha.value='';
+    ipt_cod.value='';
+}
+</script>

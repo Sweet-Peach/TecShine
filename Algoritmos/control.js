@@ -58,16 +58,16 @@ function voltar() {
 }
 
 function validar() {
-    let razaoSocial = document.getElementById('inp-razaosocial').value
+    let razaoSocial = document.getElementById('inp_razaosocial').value
     let cnpj = document.getElementById('inp_cnpj').value    
-    let responsavel = document.getElementById('inp-resp').value
-    let telefone = document.getElementById('inp-tel').value
-    let cep = document.getElementById('inp-cep').value
-    let endereco = document.getElementById('inp-end').value
-    let numero = document.getElementById('inp-n').value
-    let complemento = document.getElementById('inp-complemento').value
-    let senha = document.getElementById('inp-senha').value
-    let confirm = document.getElementById('inp-senhaconfirm').value
+    let responsavel = document.getElementById('inp_resp').value
+    let telefone = document.getElementById('inp_tel').value
+    let cep = document.getElementById('inp_cep').value
+    let endereco = document.getElementById('inp_end').value
+    let numero = document.getElementById('inp_n').value
+    let complemento = document.getElementById('inp_complemento').value
+    let senha = document.getElementById('inp_senha').value
+    let confirm = document.getElementById('inp_senhaconfirm').value
 
     if (razaoSocial &&
     cnpj &&
@@ -77,52 +77,52 @@ function validar() {
     senha &&
     telefone) 
     {
-        document.getElementById("inp-razaosocial").style.borderBottom = "solid 2px green";
+        document.getElementById("inp_razaosocial").style.borderBottom = "solid 2px green";
         document.getElementById("inp_cnpj").style.borderBottom = "solid 2px green";
-        document.getElementById("inp-end").style.borderBottom = "solid 2px green";
-        document.getElementById("inp-n").style.borderBottom = "solid 2px green";
+        document.getElementById("inp_end").style.borderBottom = "solid 2px green";
+        document.getElementById("inp_n").style.borderBottom = "solid 2px green";
         if (cnpj.length == 18) {
             console.log('cnpj ok', '')
             if (telefone.length == 11 || telefone.length == 10) {
                 console.log('telefone ok', '')
-                document.getElementById("inp-tel").style.borderBottom = "solid 2px green";
+                document.getElementById("inp_tel").style.borderBottom = "solid 2px green";
                 if (cep.length == 8) {
                     console.log('cep ok', '')
-                    document.getElementById("inp-cep").style.borderBottom = "solid 2px green";
+                    document.getElementById("inp_cep").style.borderBottom = "solid 2px green";
                     console.log("ok")
                     if (senha.length>= 8) {
                         console.log('senha ok', '')
                         console.log('ok')
-                        document.getElementById("inp-senha").style.borderBottom = "solid 2px green";
+                        document.getElementById("inp_senha").style.borderBottom = "solid 2px green";
                         if (senha == confirm) {
                             console.log('confirmacao ok', '')
                             empresa = new Usuario(razaoSocial, cnpj, responsavel,telefone, cep,endereco,numero,complemento,senha);
-                            document.getElementById("inp-senhaconfirm").style.borderBottom = "solid 2px green";
+                            document.getElementById("inp_senhaconfirm").style.borderBottom = "solid 2px green";
                             window.location.replace("admin.html");
                         } else {
                             if (!confirm) {
-                                document.getElementById("inp-senhaconfirm").style.borderBottom = "solid 2px red";
+                                document.getElementById("inp_senhaconfirm").style.borderBottom = "solid 2px red";
                             } else {
-                                document.getElementById("inp-senhaconfirm").style.borderBottom = "solid 2px green";
+                                document.getElementById("inp_senhaconfirm").style.borderBottom = "solid 2px green";
                             }
                         }
                     } else {
                         console.log('aff')
                         if (!senha) {
-                            document.getElementById("inp-senha").style.borderBottom = "solid 2px red";
+                            document.getElementById("inp_senha").style.borderBottom = "solid 2px red";
                         } else {
-                            document.getElementById("inp-senha").style.borderBottom = "solid 2px green";
+                            document.getElementById("inp_senha").style.borderBottom = "solid 2px green";
                         }
                     }
                 } else {
                     if (!cep) {
-                        document.getElementById("inp-cep").style.borderBottom = "solid 2px red";
+                        document.getElementById("inp_cep").style.borderBottom = "solid 2px red";
                     } else {
-                        document.getElementById("inp-cep").style.borderBottom = "solid 2px green";
+                        document.getElementById("inp_cep").style.borderBottom = "solid 2px green";
                     }
                 }
             } else {
-                document.getElementById("inp-tel").style.borderBottom = "solid 2px red";
+                document.getElementById("inp_tel").style.borderBottom = "solid 2px red";
             }
         } else {
             if (!cnpj) {
@@ -133,9 +133,9 @@ function validar() {
         }
     } else {
         if (!razaoSocial) {
-            document.getElementById("inp-razaosocial").style.borderBottom = "solid 2px red";
+            document.getElementById("inp_razaosocial").style.borderBottom = "solid 2px red";
         } else {
-            document.getElementById("inp-razaosocial").style.borderBottom = "solid 2px green";
+            document.getElementById("inp_razaosocial").style.borderBottom = "solid 2px green";
         }
 
         if (!cnpj) {
@@ -150,51 +150,51 @@ function validar() {
         }
 
         if (!endereco) {
-            document.getElementById("inp-end").style.borderBottom = "solid 2px red";
+            document.getElementById("inp_end").style.borderBottom = "solid 2px red";
         } else {
-            document.getElementById("inp-end").style.borderBottom = "solid 2px green";
+            document.getElementById("inp_end").style.borderBottom = "solid 2px green";
         }
 
         if (!cep) {
-            document.getElementById("inp-cep").style.borderBottom = "solid 2px red";
+            document.getElementById("inp_cep").style.borderBottom = "solid 2px red";
         } else {
             if (cep.length == 8) {
-                document.getElementById("inp-cep").style.borderBottom = "solid 2px green";
+                document.getElementById("inp_cep").style.borderBottom = "solid 2px green";
             } else{
-                document.getElementById("inp-cep").style.borderBottom = "solid 2px red";
+                document.getElementById("inp_cep").style.borderBottom = "solid 2px red";
             }  
         }
 
         if (!telefone) {
-            document.getElementById("inp-tel").style.borderBottom = "solid 2px red";
+            document.getElementById("inp_tel").style.borderBottom = "solid 2px red";
         } else {
             if (telefone.length == 11 || telefone.length == 10){
-                document.getElementById("inp-tel").style.borderBottom = "solid 2px green";
+                document.getElementById("inp_tel").style.borderBottom = "solid 2px green";
             } else {
-                document.getElementById("inp-tel").style.borderBottom = "solid 2px red";
+                document.getElementById("inp_tel").style.borderBottom = "solid 2px red";
             }
         }
 
         if (!numero) {
-            document.getElementById("inp-n").style.borderBottom = "solid 2px red";
+            document.getElementById("inp_n").style.borderBottom = "solid 2px red";
         } else {
-            document.getElementById("inp-n").style.borderBottom = "solid 2px green";
+            document.getElementById("inp_n").style.borderBottom = "solid 2px green";
         }
 
         if (!senha) {
-            document.getElementById("inp-senha").style.borderBottom = "solid 2px red";
+            document.getElementById("inp_senha").style.borderBottom = "solid 2px red";
         } else {
             if (!senha.length>= 8){
-                document.getElementById("inp-senha").style.borderBottom = "solid 2px red";
+                document.getElementById("inp_senha").style.borderBottom = "solid 2px red";
             } else {
-                document.getElementById("inp-senha").style.borderBottom = "solid 2px green";
+                document.getElementById("inp_senha").style.borderBottom = "solid 2px green";
             }
         }
     }
 }
 
 function cepFill(x) {
-    let end = document.getElementById("inp-end");
+    let end = document.getElementById("inp_end");
 
     if (x.length == 8) {
         if (x == '08535040') {
@@ -211,54 +211,6 @@ function maskCNPJ(value , id){
     var x = value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
 
     id.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
-}
-
-function entrar(){
-    var cnpj = (inp_cnpj.value).replace(/\D/g,'');
-    var senha = inp_senha.value;
-    var cod = ipt_cod.value;
-    /*todos digitos que nao forem digitos(numeros) se torna vazio /D*/
-    /*tira texto de numero /d */
-    /*encontrar qualquer ocorencia ex: %ocorencia% */
-    
-    if (cnpj == "00000000000000" || 
-    cnpj == "11111111111111" || 
-    cnpj == "22222222222222" || 
-    cnpj == "33333333333333" || 
-    cnpj == "44444444444444" || 
-    cnpj == "55555555555555" || 
-    cnpj == "66666666666666" || 
-    cnpj == "77777777777777" || 
-    cnpj == "88888888888888" || 
-    cnpj == "99999999999999"){
-        alert ('CNPJ inválido!');
-        inp_cnpj.focus();
-    }
-    else if ( senha == '' || cnpj == '' || cod == ''){
-        alert ('CNPJ, senha e/ou código em branco, insira os dados');
-    }
-    else if(senha.length > 8){
-        alert("A senha deve conter no máximo 8 digitos!");
-        inp_senha.focus();
-    }
-    else if (cod == 100){
-        window.location.replace("./admin.html");
-    }
-    else if (cod == 101){
-        window.location.replace("./dashboard.html");
-    }
-    else if (cod != 100 || cod !=101) {
-            alert ('Código inválido!');
-            ipt_cod.focus();
-    }
-    else{
-        alert ('CNPJ e/ou senha inválidos!');
-        /*colocar o caminho das telas adm e cond*/
-        // window.location.href = "./site-Institucional01.html"
-    }
-    inp_cnpj.value='';
-    inp_senha.value='';
-    ipt_cod.value='';
 }
 
 function ticket() {

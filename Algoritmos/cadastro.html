@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="Text/JavaScript" src="./control.js"></script>
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/cadastro.css">
 </head>
@@ -41,22 +40,22 @@
                     </div>
                     <div class="form">
                         <div class="row-1 row">
-                            <label for="inp-razaosocial" >*Razão Social:</label><input type="text" name="inp-razaosocial" id="inp-razaosocial" >
-                            <label for="inp_cnpj" id="label-inp-cnpj">*CNPJ:</label><input type="text" name="inp_cnpj" id="inp_cnpj" oninput="maskCNPJ(this.value,document.getElementById('inp_cnpj'))">
+                            <label for="inp_razaosocial" >*Razão Social:</label><input type="text" name="inp_razaosocial" id="inp_razaosocial" >
+                            <label for="inp_cnpj" id="label-inp_cnpj">*CNPJ:</label><input type="text" name="inp_cnpj" id="inp_cnpj" oninput="maskCNPJ(this.value,document.getElementById('inp_cnpj'))">
                         </div>
                         <div class="row-2 row">
-                            <label for="inp-resp">Nome do Responsável: </label><input type="text" name="inp-resp" id="inp-resp" >
-                            <label for="inp-tel" id="label-inp-tel">*Telefone</label><input type="text" name="inp-tel" id="inp-tel" >
+                            <label for="inp_resp">Nome do Responsável: </label><input type="text" name="inp_resp" id="inp_resp" >
+                            <label for="inp_tel" id="label-inp_tel">*Telefone</label><input type="text" name="inp_tel" id="inp_tel" >
                         </div>
                         <div class="row-3 row">
-                            <label for="inp-cep">*CEP:</label><input type="text" name="inp-cep" id="inp-cep" onchange="cepFill(this.value)">
-                            <label for="inp-end">*Endereço:</label><input type="text" name="inp-end" id="inp-end" >
-                            <label for="inp-n">*Número:</label><input type="text" name="inp-n" id="inp-n" >
+                            <label for="inp_cep">*CEP:</label><input type="text" name="inp_cep" id="inp_cep">
+                            <label for="inp_end">*Endereço:</label><input type="text" name="inp_end" id="inp_end" >
+                            <label for="inp_n">*Número:</label><input type="text" name="inp_n" id="inp_n" >
                         </div>
-                        <div class="row-4 row"><label for="inp-complemento">Complemento:</label><input type="text" name="inp-complemento" id="inp-complemento" ></div>
+                        <div class="row-4 row"><label for="inp_complemento">Complemento:</label><input type="text" name="inp_complemento" id="inp_complemento" ></div>
                         <div class="row-5 row">
-                            <label for="inp-senha">*Senha:</label><input type="text" name="inp-senha" id="inp-senha" >
-                            <label for="inp-senhaconfirm">Confirmar Senha:</label><input type="text" name="inp-senhaconfirm" id="inp-senhaconfirm" >
+                            <label for="inp_senha">*Senha:</label><input type="text" name="inp_senha" id="inp_senha" >
+                            <label for="inp_senhaconfirm">Confirmar Senha:</label><input type="text" name="inp_senhaconfirm" id="inp_senhaconfirm" >
                         </div>
                         
                     </div>
@@ -83,3 +82,52 @@
     </footer>
 </body>
 </html>
+<script>
+
+    function validar(){
+        /* 
+        a primeira parte do processo é recolher o valor das coisas inseridas nos inputs
+        essas variáveis são as informações obrigatórias, marcadas com * no site
+        */
+        var razao_social = inp_razaosocial.value
+        var cnpj = inp_cnpj.value
+        var telefone = inp_tel.value
+        var cep = inp_cep.value
+        var endereco = inp_end.value
+        var senha = inp_senha.value
+        var confirm = inp_senhaconfirm.value
+
+        // Agora tem de verificar se esses campos não estão vazios
+        if (razao_social && cnpj && cep && endereco && senha && telefone)  {
+                if(cnpj.length == 18){
+                    if (telefone.length == 11 || telefone.length == 10){
+                        if (cep.length == 8){
+                            if (senha.length>= 8){
+                                if (senha == confirm){
+                                    window.location.replace("admin.html");
+                                } else {
+                                    alert("As senhas não batem")
+                                }
+                            } else {
+                                alert("A senha tem de ter pelo menos 8 caracteres")
+                            }
+                        } else{
+                            alert("O CEP têm de ter 8 números!")
+                        }
+                    } else{
+                        alert("Digite o telefone corretamente, somente o DDD e o número")
+                    }
+                } else {
+                    alert("cnpj inválido")
+                }
+        } else {
+            alert("preencha todos os campos obrigatórios")
+        }
+    }
+
+    function maskCNPJ(value , id){
+        var x = value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+
+        id.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
+    }
+</script>

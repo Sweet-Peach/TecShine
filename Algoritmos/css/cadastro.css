@@ -102,30 +102,30 @@
     display: block;
 }
 
-#inp-razaosocial, #inp-resp, #inp-end, #inp-complemento{
+#inp_razaosocial, #inp_resp, #inp_end, #inp_complemento{
     width: 250px;
 }
 
-#inp_cnpj, #inp-tel, #inp-senha, #inp-senhaconfirm{
+#inp_cnpj, #inp_tel, #inp_senha, #inp_senhaconfirm{
     width: 140px;
 }
 
 
-#inp-tel, #inp_cnpj, #label-inp-cnpj, #label-inp-tel{
+#inp_tel, #inp_cnpj, #label-inp_cnpj, #label-inp_tel{
     margin-left: 35px;
 }
 
-#inp-cep{
+#inp_cep{
     width: 80px;
 }
 
-#inp-n {
+#inp_n {
     width: 72px;
 }
 
 
 
-#inp-complemento{
+#inp_complemento{
     margin-right: 250px;
 }
 
