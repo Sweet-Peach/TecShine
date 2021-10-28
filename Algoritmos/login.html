@@ -95,8 +95,8 @@
     else if ( senha == '' || cnpj == '' || cod == ''){
         alert ('CNPJ, senha e/ou código em branco, insira os dados');
     }
-    else if(senha.length > 8){
-        alert("A senha deve conter no máximo 8 digitos!");
+    else if(senha.length < 8){
+        alert("A senha deve conter no mínimo 8 digitos!");
         inp_senha.focus();
     }
     else if (cod == 100){
