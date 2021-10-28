@@ -1,5 +1,6 @@
 create database bdtecshine;
 use bdtecshine;
+
 -- -----------------------------------------------------
 -- Table tb_administradora
 -- -----------------------------------------------------
@@ -83,9 +84,9 @@ CREATE TABLE tb_sensores (
 )auto_increment = 3001;
 
 insert into tb_sensores (nome_sensor, fk_espaco)
-values('sensor hall 1', 2007),
-('sensor andar 3', 2008),
-('sensor hall 1', 2007);
+values('sensor hall 1', 2001),
+('sensor andar 3', 2002),
+('sensor hall 1', 2001);
 -- -----------------------------------------------------
 -- Table tb_movimentacao
 -- -----------------------------------------------------
@@ -98,9 +99,9 @@ CREATE TABLE tb_movimentacao (
 )auto_increment = 10;
 
 insert into tb_movimentacao (horario, ativacao, fk_sensor)
-values('2021-10-15 09:34:21',1,3004),
-('2020-04-02 22:34:21',1,3004),
-('2021-06-15 10:40:21',1,3005);
+values('2021-10-15 09:34:21',1,3001),
+('2020-04-02 22:34:21',1,3001),
+('2021-06-15 10:40:21',1,3002);
 
 select * from tb_administradora;
 select * from tb_condominio;
@@ -109,11 +110,17 @@ select * from tb_espaco;
 select * from tb_sensores;
 select * from tb_movimentacao;
 
-select tb_condominio.nome_cond, tb_administradora.nome_adm from tb_condominio inner join tb_administradora on tb_condominio.fk_adm = tb_administradora.id_adm;
+select tb_condominio.nome_cond as "o condomínio", tb_administradora.nome_adm as "Pertence a Administradora"from tb_condominio 
+inner join tb_administradora 
+	on tb_condominio.fk_adm = tb_administradora.id_adm;
 
-select tb_condominio.nome_cond, tb_administradora.nome_adm, tb_espaco.nome_espaco from tb_condominio 
-inner join tb_administradora on tb_condominio.fk_adm = tb_administradora.id_adm
-inner join tb_espaco on tb_espaco.fk_cond = tb_condominio.id_cond;
+select tb_condominio.nome_cond as "O condomínio", tb_administradora.nome_adm as "Que pertence a administradora:", tb_espaco.nome_espaco as "Possui o espaço:" from tb_condominio 
+inner join tb_administradora 
+	on tb_condominio.fk_adm = tb_administradora.id_adm
+inner join tb_espaco 
+	on tb_espaco.fk_cond = tb_condominio.id_cond;
 
-select tb_condominio.nome_cond, tb_administradora.nome_adm from tb_condominio 
-inner join tb_administradora on tb_condominio.fk_adm = tb_administradora.id_adm where id_cond = 1002;
+select tb_condominio.nome_cond as "O condomínio", tb_administradora.nome_adm as "Pertence a Administradora" from tb_condominio 
+inner join tb_administradora 
+	on tb_condominio.fk_adm = tb_administradora.id_adm 
+where id_cond = 1002;
