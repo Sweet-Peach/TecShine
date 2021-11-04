@@ -5,7 +5,7 @@ use bdtecshine;
 -- Table tb_administradora
 -- -----------------------------------------------------
 CREATE TABLE tb_administradora(
-  id_adm INT NOT NULL auto_increment PRIMARY KEY ,
+  id_adm INT NOT NULL auto_increment PRIMARY KEY,
   nome_razao_social_adm VARCHAR(45) NOT NULL,
   nome_adm VARCHAR(45) NOT NULL,
   telefone_adm VARCHAR(14) NULL,
@@ -13,13 +13,16 @@ CREATE TABLE tb_administradora(
   cep VARCHAR(9) NULL,
   endereco VARCHAR(45) NULL,
   numero VARCHAR(5) NULL,
-  complemento VARCHAR(45) NULL
+  complemento VARCHAR(45) NULL,
+  cnpj_adm CHAR(14) NOT NULL,
+  senha_adm VARCHAR(30) NOT NULL
 )auto_increment = 101 ;
 
 insert into tb_administradora (nome_razao_social_adm, nome_adm, telefone_adm, email_adm, 
-cep, endereco, numero, complemento)
-values('Cora ltda','Cora Administradora de condominios','(11)2331-5132', 'cora@adm.com', '09990-360', 'Rua das Amoras', '32', 'bloco3'),
-('Alcaçuz ltda','Alcaçuz Administradora de condominios','(11)4562-5132', 'alcaçuz@adm.com', '09540-360', 'Rua das Pera', '25', 'bloco1');
+cep, endereco, numero, complemento, cnpj_adm, senha_adm)
+values('Cora ltda','Cora Administradora de condominios','(11)2331-5132', 'cora@adm.com', '09990-360', 'Rua das Amoras', '32', 'bloco3', 12345678901234, 12345678),
+('Alcaçuz ltda','Alcaçuz Administradora de condominios','(11)4562-5132', 'alcaçuz@adm.com', '09540-360', 'Rua das Pera', '25', 'bloco1', 43210987654321, 12345678);
+
 -- -----------------------------------------------------
 -- Table tb_condominio
 -- -----------------------------------------------------
@@ -42,23 +45,8 @@ cep, endereco, numero, complemento, fk_adm)
 values('Paulo Sergio ltda','Morada dos passaros','(11)2331-5132', 'morada@adm.com', '09230-300', 'Avenida Pedreira', '1058', null,101),
 ('Fortaleza ltda','Fortaleza real','(11)4562-2222', 'fortaleza@adm.com', '02450-340', 'Travessa Vieira', '887', null,102),
 ('Pedro Sampaio ltda','Vilagge Brasileiro','(11)2223-5132', 'vilagge@adm.com', '1350-360', 'Rua das Amadas', '321', null,101);
--- -----------------------------------------------------
--- Table tb_usuario
--- -----------------------------------------------------
-CREATE TABLE tb_usuario_login(
-  id_usuario INT NOT NULL auto_increment PRIMARY KEY,
-  cnpj_usuario VARCHAR(45) NOT NULL,
-  senha_usuario  VARCHAR(25) NOT NULL,
-  fk_cond INT NULL,
-  fk_adm INT NOT NULL,
-  FOREIGN KEY (fk_cond) REFERENCES tb_condominio (id_cond),
-  FOREIGN KEY (fk_adm) REFERENCES tb_administradora (id_adm)
-);
 
-insert into tb_usuario_login (cnpj_usuario, senha_usuario, fk_cond, fk_adm)
-values('12. 325. 125/0001-52','123658',null,101),
-('12. 325. 125/0001-52','123658',1001,101);
--- -----------------------------------------------------
+----------
 -- Table tb_espaco
 -- -----------------------------------------------------
 CREATE TABLE tb_espaco (
@@ -105,7 +93,6 @@ values('2021-10-15 09:34:21',1,3001),
 
 select * from tb_administradora;
 select * from tb_condominio;
-select * from tb_usuario_login;
 select * from tb_espaco;
 select * from tb_sensores;
 select * from tb_movimentacao;
