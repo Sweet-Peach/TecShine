@@ -75,20 +75,20 @@
     z-index: 3;
 }
 
-.form #inp_senha, #inp_cnpj {
+.formulario #inp_senha, #inp_cnpj {
     width: 100%;
 }
 
-.form .ipt_cod{
+.formulario .ipt_cod{
     width: 35px;
 }
 
-.form p {
+.formulario p {
     text-align: start;
     margin-bottom: 0px;
 }
 
-.form input {
+.formulario input {
     margin-bottom: 5px;
     background: #FFFFFF;
     border: none;
@@ -99,14 +99,14 @@
     outline: none;  
 }
 
-.form select, option{
+.formulario select, option{
     width: 100%;
 }
 
-.form input:hover{
+.formulario input:hover{
     border-bottom: solid 2px #000;
 }
-.form input:focus{
+.formulario input:focus{
     border-bottom: solid 2px #000;
 }
 
