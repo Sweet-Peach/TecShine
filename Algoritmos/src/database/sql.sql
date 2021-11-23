@@ -24,7 +24,7 @@ CREATE TABLE medida (
 	umidade DECIMAL,
 	momento DATETIME,
 	fk_aquario INT
-);*/
+); */
 
 
 /* para workbench - local - desenvolvimento */
@@ -34,14 +34,17 @@ USE tecshine;
 
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome_razao_social VARCHAR(50),
+	razao_social VARCHAR(50),
     cnpj VARCHAR(14),
+    resp VARCHAR(50),
+    telefone varchar(20),
+    cep varchar(20),
     endereco VARCHAR(50),
     numero VARCHAR(8),
-    complemento  VARCHAR(50),
 	email VARCHAR(50),
 	senha VARCHAR(50)
 );
+select * from usuario;
 
 CREATE TABLE aviso (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -50,7 +53,7 @@ CREATE TABLE aviso (
 	fk_usuario INT,
 	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 ); 
-select * from aviso;
+
 CREATE TABLE medida (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	temperatura DECIMAL,
@@ -59,5 +62,4 @@ CREATE TABLE medida (
 	fk_aquario INT
 );
 
-
-select * from usuario;
+select * from medida;

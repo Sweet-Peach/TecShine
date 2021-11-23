@@ -44,8 +44,8 @@
                     <img src="./img/Character11 1.png" alt="imagem_login" class="img_login"> 
                 </div>
                 <div class="formulario">
-                    <p class="form">CNPJ:</p>
-                    <input id="inp_cnpj" type="text" placeholder="xx.xxx.xxx/0001-xx" oninput='maskCNPJ(this.value,inp_cnpj)'>
+                    <p class="form">Email</p>
+                    <input id="inp_email" type="text" placeholder="email@email.com">
                     <p class="form">Senha:</p>
                     <input id="inp_senha" type="password" style="-webkit-text-security:circle" placeholder="********" >
                     <!-- <label class="box-check">Código de acesso:</label>
@@ -110,7 +110,7 @@
 //     else if ( senha == '' || cnpj == '' || cod == ''){
 //         alert ('CNPJ, senha e/ou código em branco, insira os dados');
 //     }
-//     else if(senha.length < 8){
+//     else if(senha.length <script 8){
 //         alert("A senha deve conter no mínimo 8 digitos!");
 //         inp_senha.focus();
 //     }
@@ -133,25 +133,26 @@
 //     inp_senha.value='';
 //     ipt_cod.value='';
 // }
+
 function entrar() {
-        aguardar();
+        // aguardar();
 
-        var cnpjVar = inp_cnpj.value;
-        var senhaVar = ipt_senha.value;
+        var emailVar = inp_email.value;
+        var senhaVar = inp_senha.value;
 
-        console.log("FORM LOGIN: ", cnpjVar);
+        console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
 
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-        if (cnpjVar == "" || senhaVar == "") {
+        if (emailVar == "" || senhaVar == "") {
             window.alert("Preencha todos os campos para prosseguir!");
-            finalizarAguardar();
+            // finalizarAguardar();
             return false;
         }
 
-        if (cnpjVar.indexOf("@") == -1 || cnpjVar.indexOf(".com") == -1) {
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
             window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            finalizarAguardar();
+            // finalizarAguardar();
             return false;
         }
 
@@ -161,7 +162,7 @@ function entrar() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                cnpjServer: cnpjVar,
+                emailServer: emailVar,
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
@@ -179,7 +180,7 @@ function entrar() {
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = ".//dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -190,7 +191,7 @@ function entrar() {
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 

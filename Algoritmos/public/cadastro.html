@@ -53,9 +53,9 @@
                             <label for="inp_end">*Endereço:</label><input type="text" name="inpt_end" id="inp_end" >
                             <label for="inp_n">*Número:</label><input type="text" name="inpt_n" id="inp_n" >
                         </div>
-                        <div class="row-4 row"><label for="inp_complemento">Complemento:</label><input type="text" name="inpt_complemento" id="inp_complemento" ></div>
+                        <div class="row-4 row"><label for="inp_email">Email:</label><input type="text" name="inpt_email" id="inp_email" ></div>
                         <div class="row-5 row">
-                            <label for="inp_senha">*Senha:</label><input type="text" name="inp_senha" id="inpt_senha" >
+                            <label for="inp_senha">*Senha:</label><input type="text" name="inp_senha" id="inp_senha" >
                             <label for="inp_senhaconfirm">Confirmar Senha:</label><input type="text" name="inp_tsenhaconfirm" id="inp_senhaconfirm" >
                         </div>
                         
@@ -83,7 +83,7 @@
     </footer>
 </body>
 </html>
-<script>
+<!-- <script>
 
     function maskCNPJ(value , id){
         var x = value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
@@ -99,10 +99,13 @@
         */
         var razao_socialVar = inp_razaosocial.value
         var cnpjVar = (inp_cnpj.value).replace(/\D/g,'');
-        var telefoneVar = inp_tel.value
-        var cepVar = inp_cep.value
-        var enderecoVar = inp_end.value
-        var senhaVar = inp_senha.value
+        var respVar = inp_resp;
+        var telefoneVar = inp_tel.value;
+        var cepVar = inp_cep.value;
+        var enderecoVar = inp_end.value;
+        var numeroVar = inp_n.value;
+        var emailVar = inp_email.value;
+        var senhaVar = inp_senha.value;
         var confirmVar = inp_senhaconfirm.value
 
         // Agora tem de verificar se esses campos não estão vazios
@@ -181,13 +184,14 @@
                 body: JSON.stringify({
                     razao_socialServer: razao_socialVar,
                     cnpjServer: cnpjVar,
+                    respServer: respVar,
                     telefoneServer: telefoneVar,
                     cepServer: cepVar,
                     enderecoServer: enderecoVar,
-                    senhaServer: senhaVar,
-                    confirmServer: confirmVar,
-                    cepServer: cepVar,
-                    cepServer: cepVar
+                    numeroServer: numeroVar,
+                    emailServer : emailVar,   
+                    senhaServer: senhaVar
+
                 })
                 }).then(function (resposta) {
 
@@ -212,4 +216,104 @@
 
     
     
+</script> -->
+
+
+<script>
+
+function maskCNPJ(value , id){
+        var x = value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+
+        id.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x  [4] + (x[5] ? '-' + x[5] : '');
+    }
+
+    function cadastrar() {
+        // aguardar();
+
+        var razao_socialVar = inp_razaosocial.value
+        var cnpjVar = (inp_cnpj.value).replace(/\D/g,'');
+        var respVar = inp_resp;
+        var telefoneVar = inp_tel.value;
+        var cepVar = inp_cep.value;
+        var enderecoVar = inp_end.value;
+        var numeroVar = inp_n.value;
+        var emailVar = inp_email.value;
+        var senhaVar = inp_senha.value;
+        var confirmVar = inp_senhaconfirm.value;
+
+        if (razao_socialVar == "" || cnpjVar == "" || telefoneVar == "" || cepVar == "" || enderecoVar == "" || senhaVar == "" || confirmVar == "") {
+        window.alert("Preencha todos os campos para prosseguir!");
+        if (razao_socialVar == "") {
+            console.log('razão social está em branco')
+        }
+        if (cnpjVar == "") {
+            console.log('cnpj está em branco')
+        }
+        if (telefoneVar == "") {
+            console.log('telefone está em branco')
+        }
+        if (cepVar == "") {
+            console.log('CEP está em branco')
+        }
+        if (enderecoVar == "") {
+            console.log('endereço está em branco')
+        }
+        if (senhaVar == "") {
+            console.log('senha está em branco')
+        }
+        if (confirmVar == "") {
+            console.log('confirmação da senha está em branco')
+        }
+        // finalizarAguardar();
+        return false;
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            // finalizarAguardar();
+            return false;
+        }
+
+        if (senhaVar != confirmVar) {
+            window.alert("As senhas inseridas devem ser iguais para prosseguir!");
+            // finalizarAguardar();
+            return false;
+        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                    razao_socialServer: razao_socialVar,
+                    cnpjServer: cnpjVar,
+                    respServer: respVar,
+                    telefoneServer: telefoneVar,
+                    cepServer: cepVar,
+                    enderecoServer: enderecoVar,
+                    numeroServer: numeroVar,
+                    emailServer : emailVar,   
+                    senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso!");
+                window.location = "login.html";
+                limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+
 </script>

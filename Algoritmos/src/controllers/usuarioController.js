@@ -25,14 +25,15 @@ function listar(req, res) {
 }
 
 function entrar(req, res) {
-    var email = req.body.email;
-    var senha = req.body.senha;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
+        
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -60,21 +61,37 @@ function entrar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var nome = req.body.nome;
-    var sobrenome = req.body.sobrenome;
-    var email = req.body.email;
-    var senha = req.body.senha;
+    var razao_social = req.body.razao_socialServer;
+    var cnpj = req.body.cnpjServer;
+    var resp = req.body.respServer;
+    var telefone = req.body.telefoneServer;
+    var cep = req.body.cepServer;
+    var endereco = req.body. enderecoServer;
+    var numero = req.body.numeroServer;
+    var email= req.body.emailServer;
+    var senha = req.body.senhaServer;
 
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (sobrenome == undefined) {
-        res.status(400).send("Seu sobrenome está undefined!");
-    }else if (email == undefined) {
+    if (razao_social == undefined) {
+        res.status(400).send("Sua razão social está undefined!");
+    } else if (cnpj == undefined) {
+        res.status(400).send("Seu CNPJ está undefined!");
+    } else if (resp == undefined) {
+        res.status(400).send("Seu CNPJ está undefined!");
+    } else if (telefone == undefined) {
+        res.status(400).send("Seu telefone está undefined!");
+    } else if (cep == undefined) {
+        res.status(400).send("Seu CEP está undefined!");
+    } else if (endereco == undefined) {
+        res.status(400).send("Seu endereço está undefined!");
+    } else if (numero == undefined) {
+        res.status(400).send("Seu CEP está undefined!");
+    } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else {
-        usuarioModel.cadastrar(nome, sobrenome, email, senha)
+    }else {
+        
+        usuarioModel.cadastrar(razao_social, cnpj, resp, telefone, cep, endereco, numero, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
