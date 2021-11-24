@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,8 @@
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/admin.css">
 </head>
-<body>
+
+<body onload="mostrarCondominio()">
     <header class="header">
         <div class="container">
             <div class="header-container">
@@ -34,50 +36,22 @@
         <div class="container">
             <div class="admin-container">
                 <h1 class="title">BEM VINDO!</h1>
-                <p class="description">Confira abaixo os perfis sob sua supervisão e os gráficos de movimentação em tempo real..</p>
+                <p class="description">Confira abaixo os perfis sob sua supervisão e os gráficos de movimentação em
+                    tempo real..</p>
                 <div class="background">
                     <div class="cond-list">
                         <h1 class="title">Seus condominios</h1>
-                        <a href="./dashboard.html">
-                            <div class="card">
-                                <img src="./img/cond2.jpg" alt="">
-                                <div class="descr">
-                                    <h1 class="title">Condomínio Tiradentes</h1>
-                                    <p class="cnpj">CNPJ: xxxxx</p>
-                                    <p class="resp">Responsável: xxxxx</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="./dashboard.html">
-                            <div class="card">
-                                <img src="./img/cond3.jpg" alt="">
-                                <div class="descr">
-                                    <h1 class="title">Condomínio Tiradentes</h1>
-                                    <p class="cnpj">CNPJ: xxxxx</p>
-                                    <p class="resp">Responsável: xxxxx</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="./dashboard.html">
-                            <div class="card">
-                                <img src="./img/cond1.jpg" alt="">
-                                <div class="descr">
-                                    <h1 class="title">Condomínio Tiradentes</h1>
-                                    <p class="cnpj">CNPJ: xxxxx</p>
-                                    <p class="resp">Responsável: xxxxx</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="./dashboard.html">
+
+
+                        <!--                        <a href="./dashboard.html">
                             <div class="card">
                                 <img src="./img/cond4.jpg" alt="">
                                 <div class="descr">
                                     <h1 class="title">Condomínio Tiradentes</h1>
                                     <p class="cnpj">CNPJ: xxxxx</p>
-                                    <p class="resp">Responsável: xxxxx</p>
                                 </div>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
@@ -87,7 +61,7 @@
     <footer class="footer">
         <div class="container">
             <div class="div-footer1">
-                <p class="footer-direitos">Todos os direitos reservados para o site TecShine         ©2021 </p>
+                <p class="footer-direitos">Todos os direitos reservados para o site TecShine ©2021 </p>
             </div>
             <div class="div-footer2">
                 <img src="./img/instagram 1.png" alt="" class="redes-sociais">
@@ -97,4 +71,75 @@
         </div>
     </footer>
 </body>
+
 </html>
+<script>
+    function mostrarCondominio() {
+        var usuario = sessionStorage.ID_USUARIO;
+
+        fetch("./usuarios/mostrarCondominio", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuario: usuario
+            })
+        }).then(function (resposta) {
+            console.log(JSON.stringify(resposta))
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    let div = document.querySelector(".cond-list")
+                    for (let i = 0; i < resposta.length; i++) {
+                        fetch(`https://viacep.com.br/ws/${resposta[i].cep}/json/`)
+                            .then(function (resultado) {
+                                resultado.json()
+                                    .then(function (json) {
+                                        let local = json.logradouro + ", " + resposta[i].numero + " - " + json.bairro + ", " + json.localidade + " - " + json.uf + ", " + json.cep;
+                                        console.log(local)
+                                        createCond(div, resposta[i].thumbnail, resposta[i].nome, local)
+                                    })
+                                    .catch(function (error) {
+                                        console.log(error)
+                                    })
+                            })
+                        
+                    }
+                })
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+
+    function createCond(a, x, y, z) {
+        var click = document.createElement('a');
+        var card = document.createElement("div");
+        card.setAttribute("class", "card");
+        var img = document.createElement("img");
+        var descr = document.createElement('div');
+        descr.setAttribute("class", "descr")
+        var title = document.createElement('h1');
+        title.setAttribute("class", "title")
+        var cnpj = document.createElement("p");
+        cnpj.setAttribute("class", "cnpj")
+
+        descr.appendChild(title)
+        descr.appendChild(cnpj)
+        card.appendChild(img)
+        card.appendChild(descr)
+        click.appendChild(card)
+
+        img.setAttribute("src", `./img/${x}`)
+        var titleText = document.createTextNode(y)
+        var cnpjText = document.createTextNode(z)
+        cnpj.appendChild(cnpjText)
+        title.appendChild(titleText)
+        a.appendChild(click)
+    }
+
+    function consultaCEP(x, numero) {
+
+    }
+
+</script>

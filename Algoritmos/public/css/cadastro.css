@@ -102,7 +102,7 @@
     display: block;
 }
 
-#inp_razaosocial, #inp_resp, #inp_end, #inp_complemento{
+#inp_razaosocial, #inp_email, #inp_end, #inp_complemento{
     width: 250px;
 }
 

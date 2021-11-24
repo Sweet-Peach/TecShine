@@ -19,4 +19,7 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/mostrarCondominio", function (req, res) {
+    usuarioController.mostrarCondominio(req, res);
+});
 module.exports = router;

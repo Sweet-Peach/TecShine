@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./js/funcoes.js"></script>
+    <!-- <script src="./js/funcoes.js"></script> -->
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/cadastro.css">
 </head>
@@ -41,21 +41,15 @@
                     </div>
                     <div class="form">
                         <div class="row-1 row">
-                            <label for="inp_razaosocial" >*Razão Social:</label><input type="text" name="inpt_razaosocial" id="inp_razaosocial" >
-                            <label for="inp_cnpj" id="label-inp_cnpj">*CNPJ:</label><input type="text" name="inpt_cnpj" id="inp_cnpj" oninput="maskCNPJ(this.value,document.getElementById('inp_cnpj'))">
+                            <label for="inp_razaosocial" >*Razão Social:</label><input type="text" name="inp_razaosocial" id="inp_razaosocial" >
+                            <label for="inp_cnpj" id="label-inp_cnpj">*CNPJ:</label><input type="text" name="inp_cnpj" id="inp_cnpj" oninput="maskCNPJ(this.value,document.getElementById('inp_cnpj'))">
                         </div>
                         <div class="row-2 row">
-                            <label for="inp_resp">Nome do Responsável: </label><input type="text" name="inpt_resp" id="inp_resp" >
-                            <label for="inp_tel" id="label-inp_tel">*Telefone</label><input type="text" name="inpt_tel" id="inp_tel" >
+                            <label for="inp_email">Email: </label><input type="text" name="inp_email" id="inp_email" >
+                            <label for="inp_tel" id="label-inp_tel">*Telefone</label><input type="text" name="inp_tel" id="inp_tel" >
                         </div>
-                        <div class="row-3 row">
-                            <label for="inp_cep">*CEP:</label><input type="text" name="inpt_cep" id="inp_cep">
-                            <label for="inp_end">*Endereço:</label><input type="text" name="inpt_end" id="inp_end" >
-                            <label for="inp_n">*Número:</label><input type="text" name="inpt_n" id="inp_n" >
-                        </div>
-                        <div class="row-4 row"><label for="inp_complemento">Complemento:</label><input type="text" name="inpt_complemento" id="inp_complemento" ></div>
                         <div class="row-5 row">
-                            <label for="inp_senha">*Senha:</label><input type="text" name="inp_senha" id="inpt_senha" >
+                            <label for="inp_senha">*Senha:</label><input type="text" name="inp_senha" id="inp_senha" >
                             <label for="inp_senhaconfirm">Confirmar Senha:</label><input type="text" name="inp_tsenhaconfirm" id="inp_senhaconfirm" >
                         </div>
                         
@@ -92,7 +86,6 @@
     }
 
     function cadastrar() {
-        aguardar();
         /* 
         a primeira parte do processo é recolher o valor das coisas inseridas nos inputs
         essas variáveis são as informações obrigatórias, marcadas com * no site
@@ -100,8 +93,7 @@
         var razao_socialVar = inp_razaosocial.value
         var cnpjVar = (inp_cnpj.value).replace(/\D/g,'');
         var telefoneVar = inp_tel.value
-        var cepVar = inp_cep.value
-        var enderecoVar = inp_end.value
+        var emailVar = inp_email.value
         var senhaVar = inp_senha.value
         var confirmVar = inp_senhaconfirm.value
 
@@ -133,7 +125,7 @@
         // }
 
 
-    if (razao_socialVar == "" || cnpjVar == "" || telefoneVar == "" || cepVar == "" || enderecoVar == "" || senhaVar == "" || confirmVar == "") {
+    if (razao_socialVar == "" || cnpjVar == "" || senhaVar == "" || confirmVar == "" || emailVar == "") {
 
                 window.alert("Preencha todos os campos para prosseguir!");
                 if (razao_socialVar == "") {
@@ -145,10 +137,7 @@
                 if (telefoneVar == "") {
                     console.log('telefone está em branco')
                 }
-                if (cepVar == "") {
-                    console.log('CEP está em branco')
-                }
-                if (enderecoVar == "") {
+                if (emailVar == "") {
                     console.log('endereço está em branco')
                 }
                 if (senhaVar == "") {
@@ -158,7 +147,6 @@
                     console.log('confirmação da senha está em branco')
                 }
                 finalizarAguardar();
-                return false;
                 }
 
                 // if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
@@ -169,7 +157,6 @@
 
                 if (senhaVar != confirmVar) {
                 window.alert("As senhas inseridas devem ser iguais para prosseguir!");
-                finalizarAguardar();
                 return false;
                 }
 
@@ -179,31 +166,34 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    razao_socialServer: razao_socialVar,
-                    cnpjServer: cnpjVar,
-                    telefoneServer: telefoneVar,
-                    cepServer: cepVar,
-                    enderecoServer: enderecoVar,
-                    senhaServer: senhaVar,
-                    confirmServer: confirmVar,
-                    cepServer: cepVar,
-                    cepServer: cepVar
+                    razaoSocial: razao_socialVar,
+                    cnpj: cnpjVar,
+                    email: emailVar,
+                    senha: senhaVar,
+                    telefone: telefoneVar
                 })
                 }).then(function (resposta) {
 
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    window.alert("Cadastro realizado com sucesso!");
-                    window.location = "login.html";
-                    limparFormulario();
-                    finalizarAguardar();
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.razao_social;
+                        sessionStorage.ID_USUARIO = json.id_administrador;
+                        sessionStorage.TELEFONE_USUARIO = json.telefone;
+                        setTimeout(function () {
+                            window.location = "admin.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
                 }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
                 });
 
                     return false;
