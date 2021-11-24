@@ -74,8 +74,12 @@
     transition: 0.1s;
     z-index: 3;
 }
+.formulario{
+    width: 250px;
+    margin: 0 67px;
+}
 
-.formulario #inp_senha, #inp_cnpj {
+.formulario #inp_senha, #inp_email {
     width: 100%;
 }
 
