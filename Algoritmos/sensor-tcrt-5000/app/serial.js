@@ -102,10 +102,16 @@ class ArduinoDataRead {
              */
 
             parser.on('data', (data) => {
-				let value = data.toString().split(';');
+				//let value = data.toString().split(';');
 				//console.log(value);
                 
             
+                let chave = parseInt(data.replace('\r',''));
+                if (chave == 1){
+                    var chave2 = sensors.pessoas();
+                } else {
+                    var chave2 = 0;
+                }
 				//let humidity = parseFloat(value[0].replace('\r',''));
                 //let temperature = parseFloat(value[1].replace('\r',''));
                 //let chave = parseFloat(value[2].replace('\r',''));
@@ -113,11 +119,11 @@ class ArduinoDataRead {
 
                 //this.listData.push(humidity);
                 //this.__listDataTemp.push(temperature);
-                //this.ListSwitch.push(chave);
+                this.ListSwitch.push(chave2);
                 //this.ListLux.push(luz)
 
-                console.log("Temp: ",temperature," Umidade: ",humidity, 'Chave: ',chave,'Lux: ',luz);
-            
+                //console.log("Temp: ",temperature," Umidade: ",humidity, 'Chave: ',chave,'Lux: ',luz);
+                console.log("chave: ", chave2);
             });
             
         }).catch(error => console.log(error));
