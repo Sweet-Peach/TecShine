@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Cadastro Condomínio</title>
     <!-- <script src="./js/funcoes.js"></script> -->
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
     <header class="header">
@@ -20,12 +21,12 @@
                     </div>
                 </a>
                 <ul class="header-nav-bar">
-                    <li id="li-left"><a href="./index.html" class="nav-bar-li">Home</a></li>
-                    <li id="li-center"><a href="./about-us.html" class="nav-bar-li">Sobre</a></li>
-                    <li id="li-right"><a href="./contato.html" class="nav-bar-li">Contato</a></li>
+                    <li id="li-right"><a href="**" class="nav-bar-li">Assistência Técnica</a></li>
+                    <li id="li-right"><a href="./calculadora-financeira.html"  class="nav-bar-li" >Calculadora</a></li>
+                    <li id="li"><a href="./admin.html" class="nav-bar-btn" >Condomínios Cadastrados</a></li>
                 </ul>
                 <div class="div-header-container-login-cadastro">
-                    <a href="./login.html" id="btn-login">Login</a>
+                    <a href="./index.html" id="btn-cadastrar">Sair</a>
                 </div>
             </div>
         </div>
@@ -36,22 +37,22 @@
             <div class="cadastro-container">
                 <div class="cadastro-form">
                     <div class="textos">
-                        <h1 class="titulo">CADASTRO</h1>
-                        <p>Não é  cliente? Faça seu cadastro!</p>
+                        <h1 class="titulo">CADASTRO CONDOMÍNIOS</h1>
+                        <p>Adicione novos Condomínios? Faça o cadastro!</p>
                     </div>
                     <div class="form">
                         <div class="row-1 row">
-                            <label for="inp_razaosocial" >*Razão Social:</label><input type="text" name="inp_razaosocial" id="inp_razaosocial" >
-                            <label for="inp_cnpj" id="label-inp_cnpj">*CNPJ:</label><input type="text" name="inp_cnpj" id="inp_cnpj" oninput="maskCNPJ(this.value,document.getElementById('inp_cnpj'))">
+                            <label for="inp_nome" >*Nome:</label><input type="text" name="inp_nome" id="inp_nome" >
+                            <label for="inp_cep" id="label-inp_cep">*Cep:</label><input type="text" name="inp_cep" id="inp_cep" >
                         </div>
                         <div class="row-2 row">
-                            <label for="inp_email">Email: </label><input type="text" name="inp_email" id="inp_email" >
+                            <label for="inp_num">Número: </label><input type="text" name="inp_num" id="inp_num" >
                             <label for="inp_tel" id="label-inp_tel">*Telefone</label><input type="text" name="inp_tel" id="inp_tel" >
                         </div>
-                        <div class="row-5 row">
+                        <!-- <div class="row-5 row">
                             <label for="inp_senha">*Senha:</label><input type="text" name="inp_senha" id="inp_senha" >
                             <label for="inp_senhaconfirm">Confirmar Senha:</label><input type="text" name="inp_tsenhaconfirm" id="inp_senhaconfirm" >
-                        </div>
+                        </div> -->
                         
                     </div>
                     <button onclick="cadastrar()">Vamos lá!</button>
@@ -79,23 +80,16 @@
 </html>
 <script>
 
-    function maskCNPJ(value , id){
-        var x = value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
-
-        id.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x  [4] + (x[5] ? '-' + x[5] : '');
-    }
-
     function cadastrar() {
         /* 
         a primeira parte do processo é recolher o valor das coisas inseridas nos inputs
         essas variáveis são as informações obrigatórias, marcadas com * no site
         */
-        var razao_socialVar = inp_razaosocial.value
-        var cnpjVar = (inp_cnpj.value).replace(/\D/g,'');
-        var telefoneVar = inp_tel.value
-        var emailVar = inp_email.value
-        var senhaVar = inp_senha.value
-        var confirmVar = inp_senhaconfirm.value
+        var nomeVar = inp_nome.value
+        var cepVar = inp_cep.value;
+        var numVar = inp_num.value
+        var telefoneVar = inp_tel.value;
+       
 
         // Agora tem de verificar se esses campos não estão vazios
         // if (razao_social && cnpj && cep && endereco && senha && telefone)  {
@@ -125,26 +119,20 @@
         // }
 
 
-    if (razao_socialVar == "" || cnpjVar == "" || senhaVar == "" || telefoneVar == "" || emailVar == "") {
+    if (nomeVar == "" || cepVar == "" || numVar == "" || telefoneVar == "" ) {
 
                 window.alert("Preencha todos os campos para prosseguir!");
-                if (razao_socialVar == "") {
-                    console.log('razão social está em branco')
+                if (nomeVar == "") {
+                    console.log('nome está em branco')
                 }
-                if (cnpjVar == "") {
-                    console.log('cnpj está em branco')
+                if (cepVar == "") {
+                    console.log('cep está em branco')
+                }
+                if (numVar == "") {
+                    console.log('telefone está em branco')
                 }
                 if (telefoneVar == "") {
                     console.log('telefone está em branco')
-                }
-                if (emailVar == "") {
-                    console.log('endereço está em branco')
-                }
-                if (senhaVar == "") {
-                    console.log('senha está em branco')
-                }
-                if (confirmVar == "") {
-                    console.log('confirmação da senha está em branco')
                 }
                 finalizarAguardar();
                 }
@@ -155,9 +143,9 @@
                 // return false;
                 // }
 
-                if (senhaVar != confirmVar) {
-                window.alert("As senhas inseridas devem ser iguais para prosseguir!");
-                return false;
+                if(cepVar.length != 8){
+                   alert('Cep inválido')
+                   return
                 }
 
                 fetch("/usuarios/cadastrar", {
@@ -166,10 +154,9 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    razaoSocial: razao_socialVar,
-                    cnpj: cnpjVar,
-                    email: emailVar,
-                    senha: senhaVar,
+                    nome: nomeVar,
+                    cep: cepVar,
+                    num: numVar,
                     telefone: telefoneVar
                 })
                 }).then(function (resposta) {

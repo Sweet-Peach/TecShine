@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>Dashboard</title>
 </head>
-<body>
+
+<body onload="getData()">
     <header class="header">
         <div class="container">
             <div class="header-container">
@@ -39,19 +41,23 @@
                 <div class="div_graficos">
                     <div class="graph">
                         <h4 style="color: #414141;">Consumo Mensal</h4>
-                      <canvas id="myChartConsumo" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
+                        <canvas id="myChartConsumo" width="100%" height="40%"></canvas>
+                        <!--<canvas>usado para fazer desenhos-->
                     </div>
                     <div class="graph">
-                      <h4 style="color: #414141;">Comparação entre Sensores</h4>
-                      <canvas id="myChartSolucao" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
+                        <h4 style="color: #414141;">Comparação entre Sensores</h4>
+                        <canvas id="myChartSolucao" width="100%" height="40%"></canvas>
+                        <!--<canvas>usado para fazer desenhos-->
                     </div>
                     <div class="graph">
-                      <h4 style="color: #414141;">Movimentação por Período</h4>
-                      <canvas id="myChartMovimentacao" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
+                        <h4 style="color: #414141;">Movimentação por Período</h4>
+                        <canvas id="myChartMovimentacao" width="100%" height="40%"></canvas>
+                        <!--<canvas>usado para fazer desenhos-->
                     </div>
                     <div class="graph">
-                      <h4 style="color: #414141;">Comparação com/sem solução</h4>
-                      <canvas id="myChartComparacao" width="100%" height="40%"></canvas> <!--<canvas>usado para fazer desenhos-->
+                        <h4 style="color: #414141;">Comparação com/sem solução</h4>
+                        <canvas id="myChartComparacao" width="100%" height="40%"></canvas>
+                        <!--<canvas>usado para fazer desenhos-->
                     </div>
                 </div>
             </div>
@@ -61,7 +67,7 @@
     <footer class="footer">
         <div class="container">
             <div class="div-footer1">
-                <p class="footer-direitos">Todos os direitos reservados para o site TecShine         ©2021 </p>
+                <p class="footer-direitos">Todos os direitos reservados para o site TecShine ©2021 </p>
             </div>
             <div class="div-footer2">
                 <img src="./img/instagram 1.png" alt="" class="redes-sociais">
@@ -71,288 +77,311 @@
         </div>
     </footer>
 </body>
+
 </html>
 <script>
+    var ax_data = []
     var ctx = document.getElementById('myChartConsumo').getContext('2d'); /*pega o elemento com id myChart*/
-var myChartConsumo = new Chart(ctx, { /*pegeui  um novo grafico*/
-    type: 'bar', 
-    data: {
-        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun','Jul','Ago','Set','Out','Nov','Dez'], /*legendas do grafico*/
-        datasets: [{
-            label: 'Consumo Mensal(kWh)', /*titulo*/
-            data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-            backgroundColor: [
-                'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)', 
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)'
-            ],
-            borderColor: [
-                'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)', 
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        plugins: { 
-            legend: {
-                labels: {
-                    color: "white"  
-                }
-            }
+    var myChartConsumo = new Chart(ctx, { /*pegeui  um novo grafico*/
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], /*legendas do grafico*/
+            datasets: [{
+                label: 'Consumo Mensal(kWh)', /*titulo*/
+                data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
+                ],
+                borderWidth: 1
+            }]
         },
-      maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
-        scales: {
-            x: {
-                ticks: {
-                color: "white"
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "white"
+                    }
+                }
+            },
+            maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+            scales: {
+                x: {
+                    ticks: {
+                        color: "white"
+                    },
                 },
-            },
-            y: {
-                ticks: {
-                color: "white"
-                }
-            },
-        }
-    }
-});
-
-var ctx = document.getElementById('myChartSolucao').getContext('2d'); /*pega o elemento com id Bar*/
-var myChartSolucao = new Chart(ctx, { /*pegeui  um novo grafico*/
-    type: 'bar', /*tipo barra*/
-    data: {
-        labels: ['01/01/2021', '07/01/2021', '14/01/2021', '21/01/2021', '28/01/2021', '05/02/2021'], /*legendas do grafico*/
-        datasets: [{
-            label: 'Sensor 1', /*titulo*/
-            data: [120, 190, 30, 50, 20, 30], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-            backgroundColor: [
-                'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)'
-            ],
-            borderColor: [
-                'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)'
-            ],
-            borderWidth: 1
-        },{
-            label: 'Sensor 2', /*titulo*/
-            data: [20, 90, 130, 50, 120, 100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-            backgroundColor: [
-                'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)'
-            ],
-            borderColor: [
-                'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        plugins: { 
-            legend: {
-                labels: {
-                    color: "white"  
-                }
+                y: {
+                    ticks: {
+                        color: "white"
+                    }
+                },
             }
+        }
+    });
+
+    var ctx = document.getElementById('myChartSolucao').getContext('2d'); /*pega o elemento com id Bar*/
+    var myChartSolucao = new Chart(ctx, { /*pegeui  um novo grafico*/
+        type: 'bar', /*tipo barra*/
+        data: {
+            labels: ['01/01/2021', '07/01/2021', '14/01/2021', '21/01/2021', '28/01/2021', '05/02/2021'], /*legendas do grafico*/
+            datasets: [{
+                label: 'Sensor 1', /*titulo*/
+                data: [120, 190, 30, 50, 20, 30], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
+                ],
+                borderWidth: 1
+            }, {
+                label: 'Sensor 2', /*titulo*/
+                data: [20, 90, 130, 50, 120, 100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)'
+                ],
+                borderWidth: 1
+            }]
         },
-      maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
-        scales: {
-            x: {
-                ticks: {
-                color: "white"
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "white"
+                    }
                 }
             },
-            y: {
-                ticks: {
-                color: "white"
+            maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+            scales: {
+                x: {
+                    ticks: {
+                        color: "white"
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: "white"
+                    }
                 }
             }
         }
-    }
-});
+    });
 
-var ctx = document.getElementById('myChartMovimentacao').getContext('2d'); /*pega o elemento com id Bar*/
-var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
-    type: 'line', 
-    data: {
-        labels: ['06-09h', '09-12h', '12-15h','15-18h','18-21h','21-00h'], /*legendas do grafico*/
-        datasets: [{
-            label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
-            data: [120, 190, 120, 300, 200, 20], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-            backgroundColor: [
-                'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)'
-            ],
-            borderColor: [
-                'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        plugins: { 
-            legend: {
-                labels: {
-                    color: "white"  
+    function getData() {
+        fetch("http://localhost:3333/usuarios/pegarHorario")
+            .then(
+                function (resposta) {
+                    if (resposta.ok) {
+                        resposta.json().then(json => {
+                            for (let i = 0; i < json.length; i++) {
+                                ax_data.push(json[i].contagem)
+                            }
+                            var ctx = document.getElementById('myChartMovimentacao').getContext('2d'); /*pega o elemento com id Bar*/
+                            var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
+                                type: 'line',
+                                data: {
+                                    labels: ['06-09h', '09-12h', '12-15h', '15-18h', '18-21h', '21-00h'], /*legendas do grafico*/
+                                    datasets: [{
+                                        label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
+                                        data: ax_data, /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                                        backgroundColor: [
+                                            'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                                            'rgba(255, 214, 0, 0.6)',
+                                            'rgba(255, 214, 0, 0.6)',
+                                            'rgba(255, 214, 0, 0.6)',
+                                            'rgba(255, 214, 0, 0.6)',
+                                            'rgba(255, 214, 0, 0.6)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                                            'rgba(255, 214, 0, 1)',
+                                            'rgba(255, 214, 0, 1)',
+                                            'rgba(255, 214, 0, 1)',
+                                            'rgba(255, 214, 0, 1)',
+                                            'rgba(255, 214, 0, 1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    plugins: {
+                                        legend: {
+                                            labels: {
+                                                color: "white"
+                                            }
+                                        }
+                                    },
+                                    maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+                                    scales: {
+                                        x: {
+                                            ticks: {
+                                                color: "white"
+                                            }
+                                        },
+                                        y: {
+                                            ticks: {
+                                                color: "white"
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+
+                        })
+
+                    }
+
                 }
-            }
+            ).catch(function (erro) {
+                console.log(erro)
+            })
+    }
+
+
+
+    var ctx = document.getElementById('myChartComparacao').getContext('2d'); /*pega o elemento com id Bar*/
+    var myChartComparacao = new Chart(ctx, { /*pegeui  um novo grafico*/
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], /*legendas do grafico*/
+            datasets: [{
+                label: 'Com a solução', /*titulo não tem no pie o tipo vira a legenda*/
+                data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)',
+                    'rgba(255, 214, 0, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)',
+                    'rgba(255, 214, 0, 1)'
+                ],
+                borderWidth: 1
+            }, {
+                label: 'Sem solução', /*titulo não tem no pie o tipo vira a legenda*/
+                data: [1500, 2500, 2200, 3500, 2200, 2300, 3200, 2900, 3300, 2300, 2100, 3100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+                backgroundColor: [
+                    'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)',
+                    'rgba(238, 173, 45, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)',
+                    'rgba(238, 173, 45, 1)'
+                ],
+                borderWidth: 1
+            }]
         },
-        maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
-        scales: {
-            x: {
-                ticks: {
-                color: "white"
+        options: {
+
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "white"
+                    }
                 }
             },
-            y: {
-                ticks: {
-                color: "white"
+
+            maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+            scales: {
+                x: {
+                    ticks: {
+                        color: "white"
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: "white"
+                    }
                 }
             }
         }
-    }
-});
 
-var ctx = document.getElementById('myChartComparacao').getContext('2d'); /*pega o elemento com id Bar*/
-var myChartComparacao = new Chart(ctx, { /*pegeui  um novo grafico*/
-    type: 'bar', 
-    data: {
-        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun','Jul','Ago','Set','Out','Nov','Dez'], /*legendas do grafico*/
-        datasets: [{
-            label: 'Com a solução', /*titulo não tem no pie o tipo vira a legenda*/
-            data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-            backgroundColor: [
-                'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)', 
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)'
-            ],
-            borderColor: [
-                'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)', 
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)'
-            ],
-            borderWidth: 1
-        },{
-            label: 'Sem solução', /*titulo não tem no pie o tipo vira a legenda*/
-            data: [1500, 2500, 2200, 3500, 2200, 2300, 3200, 2900, 3300, 2300, 2100, 3100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-            backgroundColor: [
-                'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)', 
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)',
-                'rgba(238, 173, 45, 0.6)'
-            ],
-            borderColor: [
-                'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)', 
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)',
-                'rgba(238, 173, 45, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-
-        plugins: { 
-            legend: {
-                labels: {
-                    color: "white"  
-                }
-            }
-        },
-
-        maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
-        scales: {
-            x: {
-                ticks: {
-                color: "white"
-                }
-            },
-            y: {
-                ticks: {
-                color: "white"
-                }
-            }
-        }
-    }
-    
-});
+    });
 </script>

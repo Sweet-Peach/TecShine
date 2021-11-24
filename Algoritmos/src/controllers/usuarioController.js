@@ -76,6 +76,21 @@ function entrar(req, res) {
     }
 }
 
+function pegarHorario(req, res){
+    console.log("estou no pegar horario controller");
+    usuarioModel.pegarHorario()
+        .then(function(resposta){
+            console.log("deu certo");
+            if (resposta.length > 0) {
+                res.status(200).json(resposta)
+            } else if(resposta.length = 0){
+                res.status(204).send("meu, ta vazio!")
+            }
+        }).catch(function(erro){
+            console.log(erro)
+        })
+}
+
 function cadastrar(req, res) {
     var razaoSocial = req.body.razaoSocial;
     var cnpj = req.body.cnpj;
@@ -123,10 +138,51 @@ function cadastrar(req, res) {
     }
 }
 
+
+function cadastrarCond(req, res) {
+    var nome = req.body.nome;
+    var cep = req.body.cep;
+    var num = req.body.num;
+    var telefone = req.body.telefone;
+    var usuario = req.body.usuario;
+
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    }
+    else if (cep == undefined) {
+        res.status(400).send("Seu cep está undefined!");
+    }
+    else if (num == undefined) {
+        res.status(400).send("Seu num está undefined!");
+    }
+    else if (telefone == undefined) {
+        res.status(400).send("Seu telefone está undefined!");
+    } else {
+        
+        usuarioModel.cadastrarCond(nome, cep, num, telefone , usuario)
+            .then(
+                function(resposta){
+                    res.status(200).json(resposta)
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
+    cadastrarCond,
     cadastrar,
     listar,
     testar,
-    mostrarCondominio
+    mostrarCondominio,
+    pegarHorario
 }

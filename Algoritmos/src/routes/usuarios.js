@@ -15,11 +15,19 @@ router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
 
+router.post("/cadastrarCond", function (req, res) {
+    usuarioController.cadastrarCond(req, res);
+})
+
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
 router.post("/mostrarCondominio", function (req, res) {
     usuarioController.mostrarCondominio(req, res);
+});
+
+router.get("/pegarHorario", function (req, res) {
+    usuarioController.pegarHorario(req, res);
 });
 module.exports = router;
