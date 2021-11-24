@@ -87,3 +87,12 @@ CREATE TABLE registro(
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
+CREATE TABLE medida (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	temperatura DECIMAL,
+	umidade DECIMAL,
+	momento DATETIME,
+	fk_aquario INT
+);
+select * from medida;

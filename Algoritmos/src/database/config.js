@@ -22,7 +22,8 @@ var mySqlConfig = {
     host: "localhost",
     user: "root",
     database: "bd_bandtec",
-    password: "Hypn0s123",
+    password: "Higicon1062",
+    // password: "Hypn0s123",
 };
 
 function executar(instrucao) {
