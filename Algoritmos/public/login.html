@@ -44,8 +44,13 @@
                     <img src="./img/Character11 1.png" alt="imagem_login" class="img_login"> 
                 </div>
                 <div class="formulario">
+<<<<<<< HEAD
                     <p class="form">email:</p>
                     <input id="inp_email" type="text" placeholder="fulano@dominio.com">
+=======
+                    <p class="form">Email</p>
+                    <input id="inp_email" type="text" placeholder="email@email.com">
+>>>>>>> origin
                     <p class="form">Senha:</p>
                     <input id="inp_senha" type="password" style="-webkit-text-security:circle" placeholder="********" >
                     <!-- <label class="box-check">Código de acesso:</label>
@@ -110,7 +115,7 @@
 //     else if ( senha == '' || email == '' || cod == ''){
 //         alert ('email, senha e/ou código em branco, insira os dados');
 //     }
-//     else if(senha.length < 8){
+//     else if(senha.length <script 8){
 //         alert("A senha deve conter no mínimo 8 digitos!");
 //         inp_senha.focus();
 //     }
@@ -133,7 +138,12 @@
 //     inp_senha.value='';
 //     ipt_cod.value='';
 // }
+
 function entrar() {
+<<<<<<< HEAD
+=======
+        // aguardar();
+>>>>>>> origin
 
         var emailVar = inp_email.value;
         var senhaVar = inp_senha.value;
@@ -144,13 +154,13 @@ function entrar() {
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
         if (emailVar == "" || senhaVar == "") {
             window.alert("Preencha todos os campos para prosseguir!");
-            finalizarAguardar();
+            // finalizarAguardar();
             return false;
         }
 
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
             window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            finalizarAguardar();
+            // finalizarAguardar();
             return false;
         }
 
@@ -160,8 +170,13 @@ function entrar() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+<<<<<<< HEAD
                 email: emailVar,
                 senha: senhaVar
+=======
+                emailServer: emailVar,
+                senhaServer: senhaVar
+>>>>>>> origin
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
@@ -177,7 +192,11 @@ function entrar() {
                     sessionStorage.ID_USUARIO = json.id_administrador;
                     sessionStorage.TELEFONE_USUARIO = json.telefone;
                     setTimeout(function () {
+<<<<<<< HEAD
                         window.location = "admin.html";
+=======
+                        window.location = ".//dashboard.html";
+>>>>>>> origin
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -188,7 +207,7 @@ function entrar() {
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 
