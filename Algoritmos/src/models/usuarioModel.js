@@ -35,7 +35,7 @@ function mostrarCondominio(usuario) {
 
 function cadastrarCond(nome, cep, num, telefone, usuario) {
     var instrucao = `
-        insert condominio values (null, "${nome}", "${cep}", "${num}" ,"${telefone}", "${usuario}" );
+        insert condominio values (null, "${nome}", "${cep}", "${num}" ,"${telefone}", "${usuario}");
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -43,7 +43,12 @@ function cadastrarCond(nome, cep, num, telefone, usuario) {
 
 function pegarHorario(){
     var instrucao = `
-        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 06:00" and horario < "2021-11-24 09:00" ;
+        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 06:00" and horario < "2021-11-24 09:00";
+        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 09:00" and horario < "2021-11-24 12:00";
+        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 12:00" and horario < "2021-11-24 15:00";
+        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 15:00" and horario < "2021-11-24 18:00";
+        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 18:00" and horario < "2021-11-24 21:00";
+        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 21:00" and horario < "2021-11-24 23:59";
     `;
 console.log("Executando a instrução SQL: \n" + instrucao);
 return database.executar(instrucao);

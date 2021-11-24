@@ -89,6 +89,7 @@
         var cepVar = inp_cep.value;
         var numVar = inp_num.value
         var telefoneVar = inp_tel.value;
+        var usuario = sessionStorage.ID_USUARIO
        
 
         // Agora tem de verificar se esses campos não estão vazios
@@ -148,7 +149,7 @@
                    return
                 }
 
-                fetch("/usuarios/cadastrar", {
+                fetch("/usuarios/cadastrarCond", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -157,7 +158,8 @@
                     nome: nomeVar,
                     cep: cepVar,
                     num: numVar,
-                    telefone: telefoneVar
+                    telefone: telefoneVar,
+                    usuario: usuario
                 })
                 }).then(function (resposta) {
 
@@ -171,8 +173,8 @@
                         // sessionStorage.NOME_USUARIO = json.razao_social;
                         // sessionStorage.ID_USUARIO = json.id_administrador;
                         // sessionStorage.TELEFONE_USUARIO = json.telefone;
-                        setTimeout(function () {
-                            window.location = "login.html";
+                        setTimeout(function () {q
+                            window.location = "admin.html";
                         }, 1000); // apenas para exibir o loading
 
                     });
