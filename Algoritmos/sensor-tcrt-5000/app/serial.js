@@ -33,9 +33,9 @@ class ArduinoDataRead {
      */
     fake_data(){
         setInterval(() => {
-            let data_float = sensors.dht11({minHum:50, maxHum:100, minTemp:0, maxTemp:15});
+            //let data_float = sensors.dht11({minHum:50, maxHum:100, minTemp:0, maxTemp:15});
             let data_int = sensors.pessoas();
-            let data_lux = sensors.ldr();
+            //let data_lux = sensors.ldr();
 
             if (this.__listDataTemp.length === 59) {
                 let sum = this.__listDataTemp.reduce((a, b) =>  a + b, 0);
@@ -43,11 +43,12 @@ class ArduinoDataRead {
                     this.__listDataTemp.pop();
                 }
             }
-            console.log('temp: ', parseFloat(data_float[1].toFixed(2)), 'hum: ', data_float[0],'chave: ',data_int,'lux: ',parseFloat(data_lux.toFixed(2)));
-            this.__listDataTemp.push(data_float[1]);
-            this.listData.push(data_float[0]);
+            console.log('chave: ',data_int);
+            //console.log('temp: ', parseFloat(data_float[1].toFixed(2)), 'hum: ', data_float[0],'chave: ',data_int,'lux: ',parseFloat(data_lux.toFixed(2)));
+            // this.__listDataTemp.push(data_float[1]);
+            // this.listData.push(data_float[0]);
             this.listDataSwitch.push(data_int);
-            this.listDataLux.push(data_lux);
+            // this.listDataLux.push(data_lux);
 
         }, 2000);
     }
@@ -105,15 +106,15 @@ class ArduinoDataRead {
 				//console.log(value);
                 
             
-				let humidity = parseFloat(value[0].replace('\r',''));
-                let temperature = parseFloat(value[1].replace('\r',''));
-                let chave = parseFloat(value[2].replace('\r',''));
-                let luz = parseFloat(value[3].replace('\r',''));
+				//let humidity = parseFloat(value[0].replace('\r',''));
+                //let temperature = parseFloat(value[1].replace('\r',''));
+                //let chave = parseFloat(value[2].replace('\r',''));
+                //let luz = parseFloat(value[3].replace('\r',''));
 
-                this.listData.push(humidity);
-                this.__listDataTemp.push(temperature);
-                this.ListSwitch.push(chave);
-                this.ListLux.push(luz)
+                //this.listData.push(humidity);
+                //this.__listDataTemp.push(temperature);
+                //this.ListSwitch.push(chave);
+                //this.ListLux.push(luz)
 
                 console.log("Temp: ",temperature," Umidade: ",humidity, 'Chave: ',chave,'Lux: ',luz);
             

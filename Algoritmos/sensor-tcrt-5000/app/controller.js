@@ -57,13 +57,14 @@ router.post('/sendData', (request, response) => {
     let umidade = ArduinoData.List[ArduinoData.List.length - 1];
     let pessoas = ArduinoData.ListSwitch[ArduinoData.ListSwitch.length - 1];
     let lux = ArduinoData.ListLux[ArduinoData.ListLux.length - 1];
-
+    let condominio = Math.random() * 2 + 1;
     /**
      * Para inserir apenas temperatura utilize o bloco abaixo
      */
-    var sql = "INSERT INTO medida(temp) VALUES(?)"; 
-    let values = [temperatura];
-
+    // var sql = "INSERT INTO medida(temp) VALUES(?)"; 
+    // let values = [temperatura];
+    var sql = "insert into registro (horario, pessoas, id_condominio) values (date(now()), ?);"
+    var values = [pessoas, condominio]
     /**
      * Para inserir todos os valores utilize o bloco abaixo
      * 

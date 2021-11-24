@@ -14,9 +14,9 @@ function tcrt5000() {
   
     let random = Math.random() * (max - min) + min;
   
-    if (random > 0.5) {
+    if (random > 0.7) {
       return 1;
-    } else if (random <= 0.5) {
+    } else if (random <= 0.7) {
       return 0;
     }
 };
@@ -30,7 +30,7 @@ const soma = (x,y) => x + y;
 
 function pessoas(){
   let a = [];
-  for(let i = 0; i < 60; i++){
+  for(let i = 0; i < 30; i++){
     let medida = tcrt5000();
     a.push(medida)
   }
