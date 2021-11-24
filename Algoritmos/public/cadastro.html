@@ -178,14 +178,14 @@
 
                 if (resposta.ok) {
                     resposta.json().then(json => {
-                        console.log(json);
+                        console.log("Parabens você realizou um cadastro! Realizar login");
                         console.log(JSON.stringify(json));
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.razao_social;
-                        sessionStorage.ID_USUARIO = json.id_administrador;
-                        sessionStorage.TELEFONE_USUARIO = json.telefone;
+                        // sessionStorage.EMAIL_USUARIO = json.email;
+                        // sessionStorage.NOME_USUARIO = json.razao_social;
+                        // sessionStorage.ID_USUARIO = json.id_administrador;
+                        // sessionStorage.TELEFONE_USUARIO = json.telefone;
                         setTimeout(function () {
-                            window.location = "admin.html";
+                            window.location = "login.html";
                         }, 1000); // apenas para exibir o loading
 
                     });

@@ -1,4 +1,4 @@
-int pinoSensor = A0;
+int pinoSensor = 7;
 
 void setup() {
   pinMode (pinoSensor, INPUT);
