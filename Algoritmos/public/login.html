@@ -44,13 +44,8 @@
                     <img src="./img/Character11 1.png" alt="imagem_login" class="img_login"> 
                 </div>
                 <div class="formulario">
-<<<<<<< HEAD
                     <p class="form">email:</p>
                     <input id="inp_email" type="text" placeholder="fulano@dominio.com">
-=======
-                    <p class="form">Email</p>
-                    <input id="inp_email" type="text" placeholder="email@email.com">
->>>>>>> origin
                     <p class="form">Senha:</p>
                     <input id="inp_senha" type="password" style="-webkit-text-security:circle" placeholder="********" >
                     <!-- <label class="box-check">Código de acesso:</label>
@@ -140,10 +135,6 @@
 // }
 
 function entrar() {
-<<<<<<< HEAD
-=======
-        // aguardar();
->>>>>>> origin
 
         var emailVar = inp_email.value;
         var senhaVar = inp_senha.value;
@@ -170,17 +161,12 @@ function entrar() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-<<<<<<< HEAD
                 email: emailVar,
                 senha: senhaVar
-=======
-                emailServer: emailVar,
-                senhaServer: senhaVar
->>>>>>> origin
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
-
+            console.log(resposta)
             if (resposta.ok) {
                 console.log(resposta);
 
@@ -192,11 +178,7 @@ function entrar() {
                     sessionStorage.ID_USUARIO = json.id_administrador;
                     sessionStorage.TELEFONE_USUARIO = json.telefone;
                     setTimeout(function () {
-<<<<<<< HEAD
                         window.location = "admin.html";
-=======
-                        window.location = ".//dashboard.html";
->>>>>>> origin
                     }, 1000); // apenas para exibir o loading
 
                 });

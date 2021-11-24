@@ -96,7 +96,6 @@
                                 resultado.json()
                                     .then(function (json) {
                                         let local = json.logradouro + ", " + resposta[i].numero + " - " + json.bairro + ", " + json.localidade + " - " + json.uf + ", " + json.cep;
-                                        console.log(local)
                                         createCond(div, resposta[i].thumbnail, resposta[i].nome, local)
                                     })
                                     .catch(function (error) {
