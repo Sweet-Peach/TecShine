@@ -77,8 +77,9 @@ function entrar(req, res) {
 }
 
 function pegarHorario(req, res){
+    var condominio = req.params.idCondominio
     console.log("estou no pegar horario controller");
-    usuarioModel.pegarHorario()
+    usuarioModel.pegarHorario(condominio)
         .then(function(resposta){
             console.log("deu certo");
             if (resposta.length > 0) {
@@ -143,7 +144,7 @@ function cadastrarCond(req, res) {
     var nome = req.body.nome;
     var cep = req.body.cep;
     var num = req.body.num;
-    var telefone = req.body.telefone;
+    var thumbnail = req.body.thumbnail;
     var usuario = req.body.usuario;
 
     if (nome == undefined) {
@@ -155,11 +156,10 @@ function cadastrarCond(req, res) {
     else if (num == undefined) {
         res.status(400).send("Seu num está undefined!");
     }
-    else if (telefone == undefined) {
+    else if (thumbnail == undefined) {
         res.status(400).send("Seu telefone está undefined!");
     } else {
-        
-        usuarioModel.cadastrarCond(nome, cep, num, telefone , usuario)
+        usuarioModel.cadastrarCond(nome, cep, num, thumbnail , usuario)
             .then(
                 function(resposta){
                     res.status(200).json(resposta)

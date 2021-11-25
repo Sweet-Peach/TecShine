@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
+    <script src="./js/funcoes.js"></script>
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/admin.css">
 </head>
@@ -22,11 +23,11 @@
                 </a>
                 <ul class="header-nav-bar">
                     <li id="li-right"><a href="**" class="nav-bar-li">Assistência Técnica</a></li>
-                    <li id="li-right"><a href="./calculadora-financeira.html"  class="nav-bar-li" >Calculadora</a></li>
-                    <li id="li"><a href="./cadastro-cond.html" class="nav-bar-btn" >Cadastrar Condomínios</a></li>
+                    <li id="li-right"><a href="./calculadora-financeira.html" class="nav-bar-li">Calculadora</a></li>
+                    <li id="li"><a href="./cadastro-cond.html" class="nav-bar-btn">Cadastrar Condomínios</a></li>
                 </ul>
                 <div class="div-header-container-login-cadastro">
-                    <a href="./index.html" id="btn-cadastrar">Sair</a>
+                    <button onclick="limparSessao()" id="btn-cadastrar">Sair</button>
                 </div>
             </div>
         </div>
@@ -87,31 +88,44 @@
         }).then(function (resposta) {
             console.log(JSON.stringify(resposta))
             if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    let div = document.querySelector(".cond-list")
-                    for (let i = 0; i < resposta.length; i++) {
-                        fetch(`https://viacep.com.br/ws/${resposta[i].cep}/json/`)
-                            .then(function (resultado) {
-                                resultado.json()
-                                    .then(function (json) {
-                                        let local = json.logradouro + ", " + resposta[i].numero + " - " + json.bairro + ", " + json.localidade + " - " + json.uf + ", " + json.cep;
-                                        createCond(div, resposta[i].thumbnail, resposta[i].nome, local)
-                                    })
-                                    .catch(function (error) {
-                                        console.log(error)
-                                    })
-                            })
-                        
+
+                resposta.json().then(resposta => {
+                    if (resposta.length > 0) {
+                        let div = document.querySelector(".cond-list")
+                        for (let i = 0; i < resposta.length; i++) {
+                            fetch(`https://viacep.com.br/ws/${resposta[i].cep}/json/`)
+                                .then(function (resultado) {
+                                    resultado.json()
+                                        .then(function (json) {
+                                            let local = json.logradouro + ", " + resposta[i].numero + " - " + json.bairro + ", " + json.localidade + " - " + json.uf + ", " + json.cep;
+                                            createCond(div, resposta[i].thumbnail, resposta[i].nome, local, resposta[i].id_condominio)
+                                        })
+                                        .catch(function (error) {
+                                            console.log(error)
+                                        })
+                                })
+
+                        }
+                    } else {
+                        document.querySelector(".cond-list").innerHTML = "<h1 class='title'>Não foi encontrado nenhum condominio em seu cadastro</h1>"
+                        document.querySelector(".cond-list").innerHTML += `<button onclick="window.location = 'cadastro-cond.html'">Cadastrar condominio</button>`
                     }
                 })
+
             }
         }).catch(function (erro) {
             console.log(erro);
         })
     }
 
-    function createCond(a, x, y, z) {
+    function dashboard(x) {
+        sessionStorage.ID_CONDOMINIO = x
+        window.location = 'dashboard.html'
+    }
+
+    function createCond(a, x, y, z, id) {
         var click = document.createElement('a');
+        click.setAttribute('onclick', `dashboard(${id})`);
         var card = document.createElement("div");
         card.setAttribute("class", "card");
         var img = document.createElement("img");
