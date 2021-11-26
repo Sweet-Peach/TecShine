@@ -8,7 +8,7 @@
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
-    background: #FFD600;
+    background: #065796;
     border-radius: 50px;    
     height: 495px;
     position: relative;
@@ -38,7 +38,7 @@
     line-height: 59px;
     text-align: center;
 
-    color: #000000;
+    color: #fff;
 }
 
 .login-container .textos label{
@@ -49,12 +49,12 @@
     line-height: 30px;
     text-align: center;
 
-    color: #414141;
+    color: #fff;
 }
 
 .login-container .form {
     width: 30%;
-    color: #414141;
+    color: #fff;
     font-weight: 300;
     margin-right: 100px;
     z-index: 3;
@@ -66,7 +66,7 @@
     margin: 0 135px 0 300px;
     width: 120px;
     height: 35px;
-    background: #263238;
+    background: #5FAFEC;
     border: 1px solid #504100;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -96,7 +96,7 @@
     margin-bottom: 5px;
     background: #FFFFFF;
     border: none;
-    border-bottom: solid 2px #504100;
+    border-bottom: solid 2px #5FAFEC;
     border-radius: 2px;
     height: 20px;
     -webkit-appearance: none;
@@ -116,6 +116,9 @@
 
 .login-container button:hover{
     border: 2px solid #000;
-    color: #FFD600;
+    background-color: #5FAFEC;
+    color: #fff;
     font-weight: 700;
+    transform: scale(1.1);
+    transition: all 0.5s;
 }

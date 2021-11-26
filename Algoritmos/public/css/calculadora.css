@@ -1,5 +1,5 @@
 .div-header-container-login-cadastro #btn-cadastrar{
-    background-color: #ffd000;
+    background-color: #065796;
     border-radius: 10px;    
     font-family: Chivo;
     font-style: normal;
@@ -7,15 +7,15 @@
     line-height: 24px;
     /* identical to box height */
     text-align: center;
-    color: #414141;
+    color: #fff;
     transition: 0.2s;
     pointer-events: none;
     cursor: default;
 }
 
 .div-header-container-login-cadastro #btn-cadastrar:hover{
-    color: #414141;
-    background-color: #ffd000;
+    color: #fff;
+    background-color: #5FAFEC;
 }
 
 
@@ -26,7 +26,7 @@
 
 .clc-container{
     height: 543.3px;
-    background: linear-gradient(0deg, #FFD600, #FFD600);
+    background: linear-gradient(0deg, #065796, #065796);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(255, 255, 255, 0.5);
     border-radius: 50px;
     position: relative;
@@ -50,7 +50,7 @@
     font-weight: 300;
     font-size: 33.18px;
     line-height: 59px;
-    color: #000000;
+    color: #fff;
 }
 
 .clc-container #clc-desc {
@@ -59,7 +59,7 @@
     font-weight: normal;
     font-size: 13.27px;
     line-height: 24px;
-    color: #414141;
+    color: #fff;
 }
 
 .clc-container #clc-form-n-img {
@@ -89,7 +89,7 @@
     font-weight: 300;
     font-size: 17.3px;
     line-height: 25px;
-    color: #414141;
+    color: #ffff;
 }
 
 #clc-form .clc-inp{
@@ -108,7 +108,7 @@
 
 #clc-form #clc-btn {
     width: 207.9px;
-    background: #263238;
+    background: #5FAFEC;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 60px;
     font-family: Chivo;
@@ -118,8 +118,12 @@
     line-height: 36px;
     text-align: center;
     margin: 17.3px 123.0545px 0 123.0545px;
-    color: #FFD600;
+    color: #065796;
     border:none;
+}
+#clc-form #clc-btn:hover{
+    transform: scale(1.1);
+    transition: all 0.5s;
 }
 
 #clc-img {

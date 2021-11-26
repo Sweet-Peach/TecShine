@@ -42,7 +42,8 @@
 
 
 #div-header-container-logo .img {
-    height: 40px;
+    height: 101px;
+    margin: -23px 13px 0 -29px;
 }
 
 
@@ -58,9 +59,6 @@
     transition: 0.2s;
 }
 
-#div-header-container-logo h1:hover{
-    color: #FFD600;
-}
 
 
 .header-nav-bar {
@@ -86,7 +84,7 @@
 }
 
 .header-container .header-nav-bar .nav-bar-li:hover{
-    color: #FFD600;
+    color: #5FAFEC;
     font-weight: 500;
     font-size: 18px;
 }
@@ -98,7 +96,7 @@
     font-size: 15px;
     line-height: 24px;
     text-align: center;
-    color: #FFD600;
+    color: #5FAFEC;
     font-weight: 500;
     font-size: 18px;
     text-decoration: none;
@@ -108,7 +106,7 @@
 }
 
 .header-container .header-nav-bar #index:hover{
-    color: #FFD600;
+    color: #5FAFEC;
     font-weight: 500;
     font-size: 18px;
 }
@@ -127,7 +125,7 @@
 }
 
 .div-header-container-login-cadastro #btn-cadastrar{
-    background-color: #414141;
+    background-color: #065796;
     border-radius: 10px;    
     font-family: Chivo;
     font-style: normal;
@@ -141,7 +139,7 @@
 
 .div-header-container-login-cadastro #btn-cadastrar:hover{
     color: #414141;
-    background-color: #ffd000;
+    background-color: #5FAFEC;
 }
 
 .div-header-container-login-cadastro #btn-login{
@@ -157,7 +155,7 @@
 }
 
 .div-header-container-login-cadastro #btn-login:hover{
-    color: #FFD600;
+    color: #5FAFEC;
     font-weight: 500;
     font-size: 18px;
 }
@@ -166,7 +164,7 @@
 .footer{
     width: 100%;
     margin-bottom: 0;
-    background-color: #37474F;
+    background-color: #065796 ;
 }
 
 .footer .container {
@@ -190,7 +188,7 @@
     font-size: 12px;
     line-height: 18px;
     text-align: center;
-    color: #FFD600;
+    color: #FFFFFF;
 }
 
 .footer .footer-localizacao{
@@ -200,7 +198,7 @@
     font-size: 12px;
     line-height: 18px;
     text-align: center;
-    color: #FFD600;
+    color: #5FAFEC;
 }
 
 .footer .container .div-footer2{

@@ -1,5 +1,5 @@
 .div-header-container-login-cadastro #btn-login{
-    background-color: #414141;
+    background-color: #065796;
     border-radius: 10px;    
     font-family: Chivo;
     font-style: normal;
@@ -14,7 +14,7 @@
 
 .div-header-container-login-cadastro #btn-login:hover{
     color: #414141;
-    background-color: #ffd000;
+    background-color: #5FAFEC;
     font-size: 15px;
 }
 
@@ -27,7 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #FFD600;
+    background: #065796;
     border-radius: 50px;    
     height: 495px;
 }
@@ -47,12 +47,13 @@
     font-size: 35px;
     text-align: center;
     font-weight: 300;
+    color: #fff;
 }
 
 .cadastro-container .cadastro-form .textos p{
     margin-top: 10px;
     text-align: center;
-    color: #414141;
+    color: #FFFFFF;
     font-weight: 300;
 }
 
@@ -78,7 +79,7 @@
 .cadastro-container .cadastro-form .form input{
     background: #FFFFFF;
     border: none;
-    border-bottom: solid 2px #504100;
+    border-bottom: solid 2px #5FAFEC;
     border-radius: 2px;
     height: 20px;
     -webkit-appearance: none;
@@ -93,7 +94,7 @@
 }
 
 .cadastro-container .cadastro-form .form label{
-    color: #414141;
+    color: #fff;
     font-weight: 300;
     margin-top: 0px;
 }
@@ -135,7 +136,7 @@
     color: #FFF;
     width: 120px;
     height: 35px;
-    background: #263238;
+    background: #5FAFEC;
     border: 1px solid #504100;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -146,8 +147,11 @@
 
 .cadastro-form button:hover{
     border: 2px solid #000;
-    color: #FFD600;
+    background-color: #5FAFEC;
+    color: #fff;
     font-weight: 700;
+    transform: scale(1.1);
+    transition: all 0.5s;
 }
 
 .cadastro-container .img{

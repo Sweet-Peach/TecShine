@@ -26,7 +26,8 @@
 .section-cape-container .cape-post-it-wall #post-it-wall{
     top: 0;
     left: 0;
-    width: 800px;
+    width: 980px;
+    margin: -42px 0 0 160px;
 }
 
 .section-cape-container .tecshine-logos{
@@ -78,7 +79,7 @@
     margin-left: -45px;
     padding: 6px 22px 6px 22px;
     text-decoration: none;
-    background-color: #263238;
+    background-color: #065796;
     border-radius: 50px;
     font-family: Chivo;
     font-style: normal;
@@ -86,7 +87,11 @@
     font-size: 15px;
     line-height: 36px;
     text-align: center;
-    color: #FFD600;
+    color: #fff;
+}
+.section-two-container a:hover{
+    transform: scale(1.1);
+    transition: all 0.5s;
 }
 
 .section-three-container {
@@ -181,7 +186,7 @@ margin-top: 10px;
     margin-top: 80px;
     width: 100%;
     height: 290px;
-    background-color: #FFD600;
+    background-color: #065796;
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
 }
 
@@ -203,6 +208,7 @@ margin-top: 10px;
     font-size: 20px;
     line-height: 36px;
     /* identical to box height */
+    color: #Ffff;
     text-align: center;
 }
 
@@ -257,7 +263,7 @@ margin-top: 10px;
     margin-top: 80px;
     width: 440px;
     height: 440px;
-    background-color: #63737A;
+    background-color: #065796;
     border-radius: 100%;
     position: relative;
     margin-bottom: 80px;
@@ -276,7 +282,7 @@ margin-top: 10px;
 
     text-align: center;
 
-    color: #FFD600;
+    color: #Ffff;
 }
 
 #ellipse-paragrafo{
@@ -290,7 +296,7 @@ margin-top: 10px;
     font-size: 18.33px;
     line-height: 30px;
     text-align: center;
-    color: #FFE779;
+    color: #Ffff;
 }
 
 #ellipse-img{
