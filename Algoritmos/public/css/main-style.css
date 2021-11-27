@@ -125,9 +125,7 @@
 }
 
 .div-header-container-login-cadastro #btn-cadastrar{
-    appearance: none;
-    border: none;
-    background-color: #414141;
+    background-color: #065796;
     border-radius: 10px;    
     font-family: Chivo;
     font-style: normal;
