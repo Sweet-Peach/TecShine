@@ -27,8 +27,12 @@ router.post("/mostrarCondominio", function (req, res) {
     usuarioController.mostrarCondominio(req, res);
 });
 
-router.get("/pegarHorario/:idCondominio", function (req, res) {
+router.get("/pegarHorario/:idCondominio,:dia", function (req, res) {
     usuarioController.pegarHorario(req, res);
+});
+
+router.get("/pegarDias/:idCondominio", function (req, res) {
+    usuarioController.pegarDias(req, res);
 });
 
 module.exports = router;

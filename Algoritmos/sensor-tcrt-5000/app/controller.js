@@ -53,18 +53,22 @@ router.get('/lux',(request, response, next) => {
 
 
 router.post('/sendData', (request, response) => {
-    let temperatura = ArduinoData.ListTemp[ArduinoData.ListTemp.length - 1];
-    let umidade = ArduinoData.List[ArduinoData.List.length - 1];
+    //let temperatura = ArduinoData.ListTemp[ArduinoData.ListTemp.length - 1];
+    //let umidade = ArduinoData.List[ArduinoData.List.length - 1];
     let pessoas = ArduinoData.ListSwitch[ArduinoData.ListSwitch.length - 1];
-    let lux = ArduinoData.ListLux[ArduinoData.ListLux.length - 1];
-    let condominio = Math.random() * 2 + 1;
+    //let lux = ArduinoData.ListLux[ArduinoData.ListLux.length - 1];
+    let condominio = parseInt(Math.random() * 3 + 1);
+    let hora = parseInt(Math.random() * 17 + 6)
+    let minuto = parseInt(Math.random() * 60)
+    let dia = parseInt(Math.random() * 30 + 1)
+    let horario = `2021-11-${dia} ${hora}:${minuto}`
     /**
      * Para inserir apenas temperatura utilize o bloco abaixo
      */
     // var sql = "INSERT INTO medida(temp) VALUES(?)"; 
     // let values = [temperatura];
-    var sql = "insert into registro (horario, pessoas, id_condominio) values (date(now()), ?);"
-    var values = [pessoas, condominio]
+    var sql = "insert into registro (horario, pessoas, id_condominio) values (?);"
+    var values = [horario, pessoas, condominio]
     /**
      * Para inserir todos os valores utilize o bloco abaixo
      * 

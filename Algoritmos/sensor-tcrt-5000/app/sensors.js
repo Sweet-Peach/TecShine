@@ -30,7 +30,7 @@ const soma = (x,y) => x + y;
 
 function pessoas(){
   let a = [];
-  for(let i = 0; i < 30; i++){
+  for(let i = 0; i < 70; i++){
     let medida = tcrt5000();
     a.push(medida)
   }

@@ -78,8 +78,23 @@ function entrar(req, res) {
 
 function pegarHorario(req, res){
     var condominio = req.params.idCondominio
-    console.log("estou no pegar horario controller");
-    usuarioModel.pegarHorario(condominio)
+    var dia = req.params.dia
+    usuarioModel.pegarHorario(condominio, dia)
+        .then(function(resposta){
+            console.log("deu certo");
+            if (resposta.length > 0) {
+                res.status(200).json(resposta)
+            } else if(resposta.length = 0){
+                res.status(204).send("meu, ta vazio!")
+            }
+        }).catch(function(erro){
+            console.log(erro)
+        })
+}
+
+function pegarDias(req, res){
+    var condominio = req.params.idCondominio
+    usuarioModel.pegarDias(condominio)
         .then(function(resposta){
             console.log("deu certo");
             if (resposta.length > 0) {
@@ -184,5 +199,6 @@ module.exports = {
     listar,
     testar,
     mostrarCondominio,
-    pegarHorario
+    pegarHorario,
+    pegarDias
 }

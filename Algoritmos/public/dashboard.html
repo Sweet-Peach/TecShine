@@ -8,27 +8,26 @@
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="./js/dashboard.js"></script>
+    <script src="./js/funcoes.js"></script>
     <title>Dashboard</title>
 </head>
-
-<body onload="getData()">
+<body>
     <header class="header">
         <div class="container">
             <div class="header-container">
                 <a href="./index.html" class="header-acesso-index" id="header_logo_div">
                     <div id="div-header-container-logo">
-                        <img src="./img/Component 3.png" alt="" class="img" id="header_img">
-                        <h1 class="logo-text" id="header_titulo">TECSHINE</h1>
+                        <img src="./img/logo.svg" alt="" class="img" id="header_img">
                     </div>
                 </a>
                 <ul class="header-nav-bar">
-                    <li id="li-left"><a href="./index.html" class="nav-bar-li">Home</a></li>
-                    <li id="li-center"><a href="./about-us.html" class="nav-bar-li">Sobre</a></li>
-                    <li id="li-right"><a href="./contato.html" class="nav-bar-li">Contato</a></li>
+                    <li id="li-right"><a href="**" class="nav-bar-li">Assistência Técnica</a></li>
+                    <li id="li-right"><a href="./calculadora-financeira.html" class="nav-bar-li">Calculadora</a></li>
+                    <li id="li"><a href="./cadastro-cond.html" class="nav-bar-btn">Cadastrar Condomínios</a></li>
                 </ul>
                 <div class="div-header-container-login-cadastro">
-                    <a href="./calculadora-financeira.html" id="btn-cadastrar">Calculadora</a>
+                    <button onclick="limparSessao()" id="btn-cadastrar">Sair</button>
                 </div>
             </div>
         </div>
@@ -36,33 +35,30 @@
 
     <section class="dashboard">
         <div class="container">
-            <div class="dashboard-container">
-                <p>Acompanhe os Gráficos</p>
-                <div class="div_graficos">
-                    <div class="graph">
-                        <h4 style="color: #414141;">Consumo Mensal</h4>
-                        <canvas id="myChartConsumo" width="100%" height="40%"></canvas>
-                        <!--<canvas>usado para fazer desenhos-->
-                    </div>
-                    <div class="graph">
-                        <h4 style="color: #414141;">Comparação entre Sensores</h4>
-                        <canvas id="myChartSolucao" width="100%" height="40%"></canvas>
-                        <!--<canvas>usado para fazer desenhos-->
-                    </div>
-                    <div class="graph">
-                        <h4 style="color: #414141;">Movimentação por Período</h4>
-                        <canvas id="myChartMovimentacao" width="100%" height="40%"></canvas>
-                        <!--<canvas>usado para fazer desenhos-->
-                    </div>
-                    <div class="graph">
-                        <h4 style="color: #414141;">Comparação com/sem solução</h4>
-                        <canvas id="myChartComparacao" width="100%" height="40%"></canvas>
-                        <!--<canvas>usado para fazer desenhos-->
-                    </div>
-                </div>
+            <div class="graph">
+                <h4 style="color: #414141;">Movimentação nos últimos dias</h4>
+                <canvas id="chart-switch"></canvas>
+                <!--<canvas>usado para fazer desenhos-->
+            </div>
+            <div class="graph">
+                <h4 style="color: #414141;">Movimentação por periodo</h4>
+                <input type="date" id="data_grafico" onchange="getGraph2()">
+                <canvas id="myChartMovimentacao" width="100%" height="40%"></canvas>
+                <!--<canvas>usado para fazer desenhos-->
+            </div>
+            <div class="metrica">
+                <div class="color green">Excelente</div>
+                <div class="color yellow">Aceitável</div>
+                <div class="color orange">Abaixo do Esperado</div>
+                <div class="color red">Muito Abaixo do Esperado</div>
+            </div>
+            <div class="result_container">
+            
             </div>
         </div>
+
     </section>
+
 
     <footer class="footer">
         <div class="container">
@@ -80,308 +76,112 @@
 
 </html>
 <script>
-    var ax_data = []
-    var ctx = document.getElementById('myChartConsumo').getContext('2d'); /*pega o elemento com id myChart*/
-    var myChartConsumo = new Chart(ctx, { /*pegeui  um novo grafico*/
-        type: 'bar',
-        data: {
-            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], /*legendas do grafico*/
-            datasets: [{
-                label: 'Consumo Mensal(kWh)', /*titulo*/
-                data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-                backgroundColor: [
-                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)'
-                ],
-                borderColor: [
-                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "white"
-                    }
-                }
-            },
-            maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
-            scales: {
-                x: {
-                    ticks: {
-                        color: "white"
-                    },
-                },
-                y: {
-                    ticks: {
-                        color: "white"
-                    }
-                },
-            }
-        }
-    });
 
-    var ctx = document.getElementById('myChartSolucao').getContext('2d'); /*pega o elemento com id Bar*/
-    var myChartSolucao = new Chart(ctx, { /*pegeui  um novo grafico*/
-        type: 'bar', /*tipo barra*/
-        data: {
-            labels: ['01/01/2021', '07/01/2021', '14/01/2021', '21/01/2021', '28/01/2021', '05/02/2021'], /*legendas do grafico*/
-            datasets: [{
-                label: 'Sensor 1', /*titulo*/
-                data: [120, 190, 30, 50, 20, 30], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-                backgroundColor: [
-                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)'
-                ],
-                borderColor: [
-                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)'
-                ],
-                borderWidth: 1
-            }, {
-                label: 'Sensor 2', /*titulo*/
-                data: [20, 90, 130, 50, 120, 100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-                backgroundColor: [
-                    'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)'
-                ],
-                borderColor: [
-                    'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)'
-                ],
-                borderWidth: 1
-            }]
+    
+var ctx = document.getElementById('myChartMovimentacao').getContext('2d'); /*pega o elemento com id Bar*/
+
+var ct2 = document.getElementById('chart-switch').getContext('2d'); /*pega o elemento com id Bar*/
+
+var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
+    type: 'line',
+    data: {
+        labels: [], /*legendas do grafico*/
+        datasets: [{
+            label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
+            data: [], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+            backgroundColor: [
+                'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                'rgba(255, 214, 0, 0.6)',
+                'rgba(255, 214, 0, 0.6)',
+                'rgba(255, 214, 0, 0.6)',
+                'rgba(255, 214, 0, 0.6)',
+                'rgba(255, 214, 0, 0.6)'
+            ],
+            borderColor: [
+                'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                'rgba(255, 214, 0, 1)',
+                'rgba(255, 214, 0, 1)',
+                'rgba(255, 214, 0, 1)',
+                'rgba(255, 214, 0, 1)',
+                'rgba(255, 214, 0, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    color: "white"
+                }
+            }
         },
-        options: {
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "white"
-                    }
+        maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+        scales: {
+            x: {
+                ticks: {
+                    color: "white"
                 }
             },
-            maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
-            scales: {
-                x: {
-                    ticks: {
-                        color: "white"
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: "white"
-                    }
+            y: {
+                ticks: {
+                    color: "white"
                 }
             }
         }
-    });
-
-    function getData() {
-        fetch("http://localhost:3333/usuarios/pegarHorario")
-            .then(
-                function (resposta) {
-                    if (resposta.ok) {
-                        resposta.json().then(json => {
-                            for (let i = 0; i < json.length; i++) {
-                                ax_data.push(json[i].contagem)
-                            }
-                            var ctx = document.getElementById('myChartMovimentacao').getContext('2d'); /*pega o elemento com id Bar*/
-                            var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
-                                type: 'line',
-                                data: {
-                                    labels: ['06-09h', '09-12h', '12-15h', '15-18h', '18-21h', '21-00h'], /*legendas do grafico*/
-                                    datasets: [{
-                                        label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
-                                        data: ax_data, /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-                                        backgroundColor: [
-                                            'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                                            'rgba(255, 214, 0, 0.6)',
-                                            'rgba(255, 214, 0, 0.6)',
-                                            'rgba(255, 214, 0, 0.6)',
-                                            'rgba(255, 214, 0, 0.6)',
-                                            'rgba(255, 214, 0, 0.6)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                                            'rgba(255, 214, 0, 1)',
-                                            'rgba(255, 214, 0, 1)',
-                                            'rgba(255, 214, 0, 1)',
-                                            'rgba(255, 214, 0, 1)',
-                                            'rgba(255, 214, 0, 1)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    plugins: {
-                                        legend: {
-                                            labels: {
-                                                color: "white"
-                                            }
-                                        }
-                                    },
-                                    maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
-                                    scales: {
-                                        x: {
-                                            ticks: {
-                                                color: "white"
-                                            }
-                                        },
-                                        y: {
-                                            ticks: {
-                                                color: "white"
-                                            }
-                                        }
-                                    }
-                                }
-                            });
-
-                        })
-
-                    }
-
-                }
-            ).catch(function (erro) {
-                console.log(erro)
-            })
     }
+});
 
 
-
-    var ctx = document.getElementById('myChartComparacao').getContext('2d'); /*pega o elemento com id Bar*/
-    var myChartComparacao = new Chart(ctx, { /*pegeui  um novo grafico*/
-        type: 'bar',
-        data: {
-            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], /*legendas do grafico*/
-            datasets: [{
-                label: 'Com a solução', /*titulo não tem no pie o tipo vira a legenda*/
-                data: [1000, 1900, 1300, 1500, 1200, 1300, 1200, 1900, 1300, 1500, 1200, 1300], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-                backgroundColor: [
-                    'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)',
-                    'rgba(255, 214, 0, 0.6)'
-                ],
-                borderColor: [
-                    'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)',
-                    'rgba(255, 214, 0, 1)'
-                ],
-                borderWidth: 1
-            }, {
-                label: 'Sem solução', /*titulo não tem no pie o tipo vira a legenda*/
-                data: [1500, 2500, 2200, 3500, 2200, 2300, 3200, 2900, 3300, 2300, 2100, 3100], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
-                backgroundColor: [
-                    'rgba(238, 173, 45, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)',
-                    'rgba(238, 173, 45, 0.6)'
-                ],
-                borderColor: [
-                    'rgba(238, 173, 45, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)',
-                    'rgba(238, 173, 45, 1)'
-                ],
-                borderWidth: 1
-            }]
+var myChartDias = new Chart(ct2, { /*pegeui  um novo grafico*/
+    type: 'line',
+    data: {
+        labels: [], /*legendas do grafico*/
+        datasets: [{
+            label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
+            data: [], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+            backgroundColor: [
+                'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
+                'rgba(255, 214, 0, 0.6)',
+                'rgba(255, 214, 0, 0.6)',
+                'rgba(255, 214, 0, 0.6)',
+                'rgba(255, 214, 0, 0.6)',
+                'rgba(255, 214, 0, 0.6)'
+            ],
+            borderColor: [
+                'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
+                'rgba(255, 214, 0, 1)',
+                'rgba(255, 214, 0, 1)',
+                'rgba(255, 214, 0, 1)',
+                'rgba(255, 214, 0, 1)',
+                'rgba(255, 214, 0, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    color: "white"
+                }
+            }
         },
-        options: {
-
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "white"
-                    }
+        maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+        scales: {
+            x: {
+                ticks: {
+                    color: "white"
                 }
             },
-
-            maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
-            scales: {
-                x: {
-                    ticks: {
-                        color: "white"
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: "white"
-                    }
+            y: {
+                ticks: {
+                    color: "white"
                 }
             }
         }
+    }
+});
 
-    });
+
 </script>

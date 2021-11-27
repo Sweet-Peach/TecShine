@@ -41,9 +41,17 @@ function cadastrarCond(nome, cep, num, thumbnail, usuario) {
     return database.executar(instrucao);
 }
 
-function pegarHorario(condominio){
+function pegarHorario(condominio, dia){
     var instrucao = `
-        select hour(horario) as horario, sum(pessoas) as pessoas from registro where id_condominio = ${condominio} and date(horario) = ('2021-11-25') group by(hour(horario)) order by(horario);
+        select hour(horario) as horario, sum(pessoas) as pessoas from registro where id_condominio = ${condominio} and date(horario) = ('${dia}') group by(hour(horario)) order by(horario);
+    `;
+console.log("Executando a instrução SQL: \n" + instrucao);
+return database.executar(instrucao);
+}
+
+function pegarDias(condominio){
+    var instrucao = `
+        SELECT DATE_FORMAT(t1.horario, '%a') as horario, t1.pessoas as pessoas FROM (select horario, pessoas from registro as re where id_condominio = ${condominio} group by date(horario) order by date(horario) desc limit 8) as t1 ORDER BY t1.horario;
     `;
 console.log("Executando a instrução SQL: \n" + instrucao);
 return database.executar(instrucao);
@@ -60,5 +68,6 @@ module.exports = {
     listar,
     mostrarCondominio,
     cadastrarCond,
-    pegarHorario
+    pegarHorario,
+    pegarDias
 };
