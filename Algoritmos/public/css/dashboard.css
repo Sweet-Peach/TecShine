@@ -70,12 +70,12 @@ footer {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: rgba(97, 97, 97);
+    background-color: #FFF;
     width: 40%;
     height: 35vh;
     margin: 20px 10px;
     padding: 5px;
-    color:#FFD600;
+    color:#1C85E8;
   }
 
 .result_container{

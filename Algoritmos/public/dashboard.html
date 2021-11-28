@@ -36,12 +36,12 @@
     <section class="dashboard">
         <div class="container">
             <div class="graph">
-                <h4 style="color: #414141;">Movimentação nos últimos dias</h4>
+                <h4 style="color: #1C85E8;">Movimentação nos últimos dias</h4>
                 <canvas id="chart-switch"></canvas>
                 <!--<canvas>usado para fazer desenhos-->
             </div>
             <div class="graph">
-                <h4 style="color: #414141;">Movimentação por periodo</h4>
+                <h4 style="color: #1C85E8;;">Movimentação por periodo</h4>
                 <input type="date" id="data_grafico" onchange="getGraph2()">
                 <canvas id="myChartMovimentacao" width="100%" height="40%"></canvas>
                 <!--<canvas>usado para fazer desenhos-->
@@ -90,20 +90,20 @@ var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
             label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
             data: [], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
             backgroundColor: [
-                'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)'
+                '#5FAFEC', /*r=red, g=green, b=blue, a=opacidade */
+                '#5FAFEC',
+                '#5FAFEC',
+                '#5FAFEC',
+                '#5FAFEC',
+                '#5FAFEC'
             ],
             borderColor: [
-                'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)'
+                '#1C85E8', /*r=red, g=green, b=blue, a=opacidade */
+                '#1C85E8',
+                '#1C85E8',
+                '#1C85E8',
+                '#1C85E8',
+                '#1C85E8'
             ],
             borderWidth: 1
         }]
@@ -112,7 +112,7 @@ var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
         plugins: {
             legend: {
                 labels: {
-                    color: "white"
+                    color: "#1C85E8"
                 }
             }
         },
@@ -120,12 +120,12 @@ var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
         scales: {
             x: {
                 ticks: {
-                    color: "white"
+                    color: "#1C85E8"
                 }
             },
             y: {
                 ticks: {
-                    color: "white"
+                    color: "#1C85E8"
                 }
             }
         }
@@ -138,32 +138,34 @@ var myChartDias = new Chart(ct2, { /*pegeui  um novo grafico*/
     data: {
         labels: [], /*legendas do grafico*/
         datasets: [{
+            lineTension: 0.7, 
             label: 'Movimentação por Período', /*titulo não tem no pie o tipo vira a legenda*/
             data: [], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
             backgroundColor: [
-                'rgba(255, 214, 0, 0.6)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)',
-                'rgba(255, 214, 0, 0.6)'
+                '#5FAFEC', /*r=red, g=green, b=blue, a=opacidade */
+                '#5FAFEC',
+                '#5FAFEC',
+                '#5FAFEC',
+                '#5FAFEC',
+                '#5FAFEC'
             ],
             borderColor: [
-                'rgba(255, 214, 0, 1)', /*r=red, g=green, b=blue, a=opacidade */
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)',
-                'rgba(255, 214, 0, 1)'
+                '#1C85E8', /*r=red, g=green, b=blue, a=opacidade */
+                '#1C85E8',
+                '#1C85E8',
+                '#1C85E8',
+                '#1C85E8',
+                '#1C85E8'
             ],
             borderWidth: 1
         }]
     },
     options: {
+        bezierCurve : true,
         plugins: {
             legend: {
                 labels: {
-                    color: "white"
+                    color: "#5FAFEC;"
                 }
             }
         },
@@ -171,12 +173,12 @@ var myChartDias = new Chart(ct2, { /*pegeui  um novo grafico*/
         scales: {
             x: {
                 ticks: {
-                    color: "white"
+                    color: "#1C85E8"
                 }
             },
             y: {
                 ticks: {
-                    color: "white"
+                    color: "#1C85E8"
                 }
             }
         }
