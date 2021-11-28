@@ -166,18 +166,11 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    resposta.json().then(json => {
-                        console.log("Parabens você realizou um cadastro! Realizar login");
-                        console.log(JSON.stringify(json));
-                        // sessionStorage.EMAIL_USUARIO = json.email;
-                        // sessionStorage.NOME_USUARIO = json.razao_social;
-                        // sessionStorage.ID_USUARIO = json.id_administrador;
-                        // sessionStorage.TELEFONE_USUARIO = json.telefone;
+                        console.log("Parabens você realizou um cadastro!");
                         setTimeout(function () {
                             window.location = "admin.html";
                         }, 1000); // apenas para exibir o loading
 
-                    });
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }

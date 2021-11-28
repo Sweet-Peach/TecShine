@@ -19,7 +19,8 @@ function entrar(email, senha) {
 
 function cadastrar(razaoSocial, cnpj, telefone, email, senha) {
     var instrucao = `
-        insert administrador values (null, "${razaoSocial}", "${cnpj}", "${telefone}", "${email}", "${senha}");
+        INSERT INTO administrador (razao_social, cnpj, telefone, email, senha) VALUES
+            ('${razaoSocial}', '${cnpj}', '${telefone}', '${email}','${senha}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -35,7 +36,8 @@ function mostrarCondominio(usuario) {
 
 function cadastrarCond(nome, cep, num, thumbnail, usuario) {
     var instrucao = `
-        insert condominio values (null, "${nome}", "${cep}", "${num}" ,"${thumbnail}", "${usuario}");
+        INSERT INTO condominio(nome, cep,numero, thumbnail, id_administrador)
+            VALUES ('${nome}', '${cep}', '${num}', '${thumbnail}', ${usuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -56,11 +58,6 @@ function pegarDias(condominio){
 console.log("Executando a instrução SQL: \n" + instrucao);
 return database.executar(instrucao);
 }
-/*         select  sum(pessoas) as contagem from registro where horario > "2021-11-24 09:00" and horario < "2021-11-24 12:00" ;
-        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 12:00" and horario < "2021-11-24 15:00" ;
-        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 15:00" and horario < "2021-11-24 18:00" ;
-        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 18:00" and horario < "2021-11-24 21:00" ;
-        select  sum(pessoas) as contagem from registro where horario > "2021-11-24 21:00" and horario < "2021-11-24 23:59" ;*/
 
 module.exports = {
     entrar,
