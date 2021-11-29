@@ -53,7 +53,7 @@ return database.executar(instrucao);
 
 function pegarDias(condominio){
     var instrucao = `
-        SELECT DATE_FORMAT(t1.horario, '%a') as horario, t1.pessoas as pessoas FROM (select horario, pessoas from registro as re where id_condominio = ${condominio} group by date(horario) order by date(horario) desc limit 8) as t1 ORDER BY t1.horario;
+    SELECT DATE_FORMAT(t1.horario, '%a') as horario, t1.pessoas as pessoas FROM (select horario, pessoas from registro as re where id_condominio = ${condominio} group by date(horario) order by date(horario) desc limit 8) as t1 ORDER BY t1.horario;
     `;
 console.log("Executando a instrução SQL: \n" + instrucao);
 return database.executar(instrucao);
