@@ -103,7 +103,7 @@ footer {
 
 .number_result{
     font-weight: 300;
-    font-size: 70px;
+    font-size: 50px;
     width: 86px;
 }
 
@@ -111,11 +111,18 @@ footer {
     display: flex;
     width: 100%;
     height: 20px;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: space-evenly;
 }
 .result .msg_result p {
     margin-block-start: 0;
     margin-block-end: 0;
+    font-size: 12px;
+}
+
+.result .msg_result img {
+    width: 12px;
+    height: 12px;
 }
 
 .metrica{

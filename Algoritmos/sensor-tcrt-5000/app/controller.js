@@ -57,7 +57,7 @@ router.post('/sendData', (request, response) => {
     //let umidade = ArduinoData.List[ArduinoData.List.length - 1];
     let pessoas = ArduinoData.ListSwitch[ArduinoData.ListSwitch.length - 1];
     //let lux = ArduinoData.ListLux[ArduinoData.ListLux.length - 1];
-    let condominio = parseInt(Math.random() * 3 + 1);
+    let condominio = parseInt(Math.random() * 24 + 1);
     let hora = parseInt(Math.random() * 17 + 6)
     let minuto = parseInt(Math.random() * 60)
     let dia = parseInt(Math.random() * 30 + 1)
@@ -67,7 +67,7 @@ router.post('/sendData', (request, response) => {
      */
     // var sql = "INSERT INTO medida(temp) VALUES(?)"; 
     // let values = [temperatura];
-    var sql = "insert into registro (horario, pessoas, id_condominio) values (?);"
+    var sql = "insert into registro (horario, pessoas, id_sensor) values (?);"
     var values = [horario, pessoas, condominio]
     /**
      * Para inserir todos os valores utilize o bloco abaixo
@@ -75,10 +75,12 @@ router.post('/sendData', (request, response) => {
      * var sql = "Insert INTO medida(temp,umi,pessoas,lux) VALUES(?)";
      * let values = [temperatura,umidade,pessoas,lux]
      */
-    db.query(sql, [values], function(err, result){
-        if(err) throw err;
-        console.log("Medidas inseridas: " + result.affectedRows)
-    });
+    if (pessoas != 0 ) {
+        db.query(sql, [values], function(err, result){
+            if(err) throw err;
+            console.log("Medidas inseridas: " + result.affectedRows)
+        });
+    }
     response.sendStatus(200);
 });
 

@@ -115,11 +115,11 @@ function createResultTrue(div, date, number, porcent) {
     arrow.src = './assets/icon/arrowup.png'
     msg.innerHTML = `Aumentou ${porcent}%`
 
-    if (number>30) {
+    if (number>200) {
         number_result.style.color = "rgba(153, 251, 49, 0.6)"
-    } else if(number >25){
+    } else if(number >150){
         number_result.style.color = "rgba(255, 251, 32, 0.6)"
-    } else if(number >20){
+    } else if(number >100){
         number_result.style.color = "rgba(255, 131, 15, 0.6)"
     } else if (number > 0) {
         number_result.style.color = "rgba(255, 44, 33, 0.6)"
@@ -150,11 +150,12 @@ function createResultFalse(div, date, number, porcent) {
     result.appendChild(date_result)
     result.appendChild(number_result)
     result.appendChild(msg_result)
-    if (number>30) {
+
+    if (number>200) {
         number_result.style.color = "rgba(153, 251, 49, 0.6)"
-    } else if(number >25){
+    } else if(number >150){
         number_result.style.color = "rgba(255, 251, 32, 0.6)"
-    } else if(number >20){
+    } else if(number >100){
         number_result.style.color = "rgba(255, 131, 15, 0.6)"
     } else if (number > 0) {
         number_result.style.color = "rgba(255, 44, 33, 0.6)"

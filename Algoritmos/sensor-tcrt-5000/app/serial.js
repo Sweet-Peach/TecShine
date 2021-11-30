@@ -50,7 +50,7 @@ class ArduinoDataRead {
             this.listDataSwitch.push(data_int);
             // this.listDataLux.push(data_lux);
 
-        }, 2000);
+        }, 700);
     }
     /**
      * Neste bloco testamos a conexão. Caso exista um arduino ele busca as informações do arduino

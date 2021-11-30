@@ -41,6 +41,27 @@ insert condominio value(3, "Conjunto Guanabara", "08502404", "105", "condominio0
 
 select * from condominio;
 
+create table sensor(
+	id_sensor int auto_increment,
+    nome varchar(50),
+    localizacao varchar(80),
+    id_condominio int not null,
+    primary key (id_sensor, id_condominio),
+    constraint fk_condominio_sensor 
+    foreign key(id_condominio) references condominio(id_condominio)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
+
+insert into sensor (nome, localizacao, id_condominio) values
+("sensor1","primeiro andar/ sala 2",1),("sensor2","primeiro andar/ sala 4",1),("sensor3","segundo andar/ sala 6",1),("sensor4","segundo andar/ sala 8",1),("sensor5","terceiro andar/ sala 10",1),
+("sensor6","terceiro andar/ sala 12",1),("sensor7","quarto andar/ sala 14",1),("sensor8","quarto andar/ sala 16",1),("sensor9","quinto andar/ sala 18",1),("sensor10","quinto andar/ sala 20",1),
+("sensor1","primeiro andar/ sala 1",2),("sensor2","primeiro andar/ sala 3",2),("sensor3","segundo andar/ sala 5",2),("sensor4","segundo andar/ sala 7",2),("sensor5","terceiro andar/ copa ",2),
+("sensor1","primeiro andar/ sala 3",3),("sensor2","segundo andar/ sala 15",3),("sensor3","terceiro andar/ sala 32",3),("sensor4","quarto andar/ sala 56",3),("sensor5","quinto andar/ sala 62",3),
+("sensor6","sétimo andar/ sala 76",3),("sensor7","oitavo andar/ sala 88",3),("sensor8","nono andar/ sala 89",3),("sensor9","décimo andar/ sala 101",3),("sensor10","décimo primeiro andar/ copa",3);
+
+
+select * from sensor;
 -- -----------------------------------------------------
 -- Tabela registro
 -- -----------------------------------------------------
@@ -48,14 +69,15 @@ CREATE TABLE registro(
   id_registro INT NOT NULL auto_increment,
   horario DATETIME NULL,
   pessoas int NULL,
-  id_condominio INT NOT NULL,
-  PRIMARY KEY (id_registro, id_condominio),
- CONSTRAINT fk_condominio_registro
-    FOREIGN KEY (id_condominio)
-    REFERENCES condominio(id_condominio)
+  id_sensor INT NOT NULL,
+  PRIMARY KEY (id_registro, id_sensor),
+	CONSTRAINT fk_sensor_registro
+    FOREIGN KEY (id_sensor)
+    REFERENCES sensor(id_sensor)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
 select * from registro;
 insert into registro values (null, now(), 40, 1);
 insert into registro (horario, pessoas, id_condominio) values (time('06:59'), 50, 2);
