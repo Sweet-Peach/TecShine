@@ -79,6 +79,7 @@ CREATE TABLE registro(
 );
 
 select * from registro;
+
 insert into registro values (null, now(), 40, 1);
 insert into registro (horario, pessoas, id_condominio) values (time('06:59'), 50, 2);
 insert into registro (horario, pessoas, id_condominio) values ("2021-11-25 17:00", 50, 2);

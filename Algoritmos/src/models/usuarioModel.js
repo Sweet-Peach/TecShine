@@ -54,10 +54,10 @@ console.log("Executando a instrução SQL: \n" + instrucao);
 return database.executar(instrucao);
 }
 
-function pegarDias(condominio){
+function pegarDias(condominio){s
     var instrucao = `
         SELECT DATE_FORMAT(t1.horario, '%a') as horario, t1.pessoas as pessoas FROM 
-        (select horario, sum(pessoas) as pessoas from registro as re 
+        (select horario, sum(pessoas) as pessoas from regis tro as re 
         join sensor se
             on re.id_sensor = se.id_sensor
         where id_condominio = ${condominio} group by date(horario) order by date(horario) desc limit 8)
