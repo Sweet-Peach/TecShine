@@ -54,18 +54,28 @@ console.log("Executando a instrução SQL: \n" + instrucao);
 return database.executar(instrucao);
 }
 
-function pegarDias(condominio){s
+function pegarDias(condominio){
     var instrucao = `
-        SELECT DATE_FORMAT(t1.horario, '%a') as horario, t1.pessoas as pessoas FROM 
-        (select horario, sum(pessoas) as pessoas from regis tro as re 
+        SELECT DATE_FORMAT(t1.horario, '%d/%m/%y') as horario, t1.pessoas as pessoas FROM 
+        (select horario, sum(pessoas) as pessoas from registro as re 
         join sensor se
             on re.id_sensor = se.id_sensor
         where id_condominio = ${condominio} group by date(horario) order by date(horario) desc limit 8)
-        as t1 ORDER BY t1.horario;
+        as t1 ORDER BY t1.horario limit 7;
     `;
 console.log("Executando a instrução SQL: \n" + instrucao);
 return database.executar(instrucao);
 }
+
+// criação da função para pegar dados em tempo real
+function tempoReal(condominio){
+    var instrucao = `
+    select date_format(now(), '%Hh%i') as horario ,pessoas from registro re join sensor se on se.id_sensor = re.id_sensor join condominio co on co.id_condominio = se.id_condominio where co.id_condominio = ${condominio} order by re.id_registro desc limit 7;
+
+    `; //criação da query para trazer o ultimo dado do select do registro que usa como referencia o condominio passado no parametro. 
+    return database.executar(instrucao); //execução da query
+}
+
 
 module.exports = {
     entrar,
@@ -74,5 +84,6 @@ module.exports = {
     mostrarCondominio,
     cadastrarCond,
     pegarHorario,
-    pegarDias
+    pegarDias,
+    tempoReal
 };

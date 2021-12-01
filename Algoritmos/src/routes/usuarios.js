@@ -35,4 +35,8 @@ router.get("/pegarDias/:idCondominio", function (req, res) {
     usuarioController.pegarDias(req, res);
 });
 
+router.get("/tempoReal/:idCondominio", function (req, res) {
+    usuarioController.tempoReal(req, res);
+});
+
 module.exports = router;

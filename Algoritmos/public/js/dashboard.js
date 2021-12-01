@@ -1,3 +1,8 @@
+var horario = []
+var qtd = []
+
+
+
 function getGraph2() {
     var ax_data_horario = [];
     var ax_data_pessoas = [];
@@ -86,6 +91,31 @@ function getGraph1() {
         })
 }
 
+function getTempoReal(){
+    let id_condominio = sessionStorage.ID_CONDOMINIO;
+    fetch(`./usuarios/tempoReal/${id_condominio}`)
+        .then(function(resposta){
+            resposta.json().then(json=>{
+                let qtd_ax = 0;
+                for (let i = 0; i < json.length; i++) {
+                    qtd_ax += json[i].pessoas;
+                }
+                
+                if (horario.length==10) {
+                    horario.shift()
+                }
+                if (qtd.length==10) {
+                    qtd.shift()
+                }
+                horario.push(json[0].horario);
+                qtd.push(qtd_ax);
+
+                myChartTempoReal.data.labels = horario
+                myChartTempoReal.data.datasets[0].data = qtd
+                myChartTempoReal.update();
+            })
+        })
+}
 
 getGraph1()
 
@@ -118,7 +148,7 @@ function createResultTrue(div, date, number, porcent) {
     if (number>200) {
         number_result.style.color = "rgba(153, 251, 49, 0.6)"
     } else if(number >150){
-        number_result.style.color = "rgba(255, 251, 32, 0.6)"
+        number_result.style.color = "#ffc22299"
     } else if(number >100){
         number_result.style.color = "rgba(255, 131, 15, 0.6)"
     } else if (number > 0) {
@@ -154,7 +184,7 @@ function createResultFalse(div, date, number, porcent) {
     if (number>200) {
         number_result.style.color = "rgba(153, 251, 49, 0.6)"
     } else if(number >150){
-        number_result.style.color = "rgba(255, 251, 32, 0.6)"
+        number_result.style.color = "#ffc22299"
     } else if(number >100){
         number_result.style.color = "rgba(255, 131, 15, 0.6)"
     } else if (number > 0) {
@@ -166,3 +196,10 @@ function createResultFalse(div, date, number, porcent) {
 
     div.appendChild(result)
 }
+
+
+
+
+setInterval(() => {
+    getTempoReal();
+}, 10000);

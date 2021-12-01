@@ -36,6 +36,11 @@
     <section class="dashboard">
         <div class="container">
             <div class="graph">
+                <h4 style="color: #1C85E8;">Movimentação em tempo real</h4>
+                <canvas id="chart-real"></canvas>
+                <!--<canvas>usado para fazer desenhos-->
+            </div>
+            <div class="graph">
                 <h4 style="color: #1C85E8;">Movimentação nos últimos dias</h4>
                 <canvas id="chart-switch"></canvas>
                 <!--<canvas>usado para fazer desenhos-->
@@ -78,10 +83,10 @@
 </html>
 <script>
 
-    
 var ctx = document.getElementById('myChartMovimentacao').getContext('2d'); /*pega o elemento com id Bar*/
-
+var ctr = document.getElementById('chart-real').getContext('2d');
 var ct2 = document.getElementById('chart-switch').getContext('2d'); /*pega o elemento com id Bar*/
+
 
 var myChartMovimentacao = new Chart(ctx, { /*pegeui  um novo grafico*/
     type: 'line',
@@ -186,5 +191,56 @@ var myChartDias = new Chart(ct2, { /*pegeui  um novo grafico*/
     }
 });
 
+var myChartTempoReal = new Chart(ctr, { /*pegeui  um novo grafico*/
+    type: 'line',
+    data: {
+        labels: [], /*legendas do grafico*/
+        datasets: [{
+            lineTension: 0.7, 
+            label: 'Movimentação em Tempo Real', /*titulo não tem no pie o tipo vira a legenda*/
+            data: [], /*inseri aqui os numeros do nosso alerts */ /*isso é um vetor =  lugar aonde tem varias variavies*/
+            backgroundColor: [
+                '#5FAFEC', /*r=red, g=green, b=blue, a=opacidade */
+                '#5FAFEC',
+                '#5FAFEC',
+                '#5FAFEC',
+                '#5FAFEC',
+                '#5FAFEC'
+            ],
+            borderColor: [
+                '#1C85E8', /*r=red, g=green, b=blue, a=opacidade */
+                '#1C85E8',
+                '#1C85E8',
+                '#1C85E8',
+                '#1C85E8',
+                '#1C85E8'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        bezierCurve : true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: "#5FAFEC;"
+                }
+            }
+        },
+        maintainAspectRatio: false, /*isso diz para ele alterar so o width ou so o height, se ficar true ele altera os dois*/
+        scales: {
+            x: {
+                ticks: {
+                    color: "#1C85E8"
+                }
+            },
+            y: {
+                ticks: {
+                    color: "#1C85E8"
+                }
+            }
+        }
+    }
+});
 
 </script>

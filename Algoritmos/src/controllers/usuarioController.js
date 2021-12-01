@@ -107,6 +107,21 @@ function pegarDias(req, res){
         })
 }
 
+function tempoReal(req,res){
+    var condominio = req.params.idCondominio
+    usuarioModel.tempoReal(condominio)
+        .then(function(resposta){
+            console.log("deu certo");
+            if (resposta.length > 0) {
+                res.status(200).json(resposta)
+            } else if(resposta.length = 0){
+                res.status(204).send("meu, ta vazio!")
+            }
+        }).catch(function(erro){
+            console.log(erro)
+        })
+}
+
 function cadastrar(req, res) {
     var razaoSocial = req.body.razaoSocial;
     var cnpj = req.body.cnpj;
@@ -200,5 +215,6 @@ module.exports = {
     testar,
     mostrarCondominio,
     pegarHorario,
-    pegarDias
+    pegarDias,
+    tempoReal
 }

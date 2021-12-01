@@ -58,17 +58,17 @@ router.post('/sendData', (request, response) => {
     let pessoas = ArduinoData.ListSwitch[ArduinoData.ListSwitch.length - 1];
     //let lux = ArduinoData.ListLux[ArduinoData.ListLux.length - 1];
     let condominio = parseInt(Math.random() * 24 + 1);
-    let hora = parseInt(Math.random() * 17 + 6)
-    let minuto = parseInt(Math.random() * 60)
-    let dia = parseInt(Math.random() * 30 + 1)
-    let horario = `2021-11-${dia} ${hora}:${minuto}`
+    //let hora = parseInt(Math.random() * 17 + 6)
+    //let minuto = parseInt(Math.random() * 60)
+    //let dia = parseInt(Math.random() * 30 + 1)
+    //let horario = `2021-11-${dia} ${hora}:${minuto}`
     /**
      * Para inserir apenas temperatura utilize o bloco abaixo
      */
     // var sql = "INSERT INTO medida(temp) VALUES(?)"; 
     // let values = [temperatura];
-    var sql = "insert into registro (horario, pessoas, id_sensor) values (?);"
-    var values = [horario, pessoas, condominio]
+    var sql = "insert into registro (horario, pessoas, id_sensor) values (now(), ?);"
+    var values = [pessoas, condominio]
     /**
      * Para inserir todos os valores utilize o bloco abaixo
      * 
