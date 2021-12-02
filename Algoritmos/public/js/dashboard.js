@@ -107,6 +107,9 @@ function getTempoReal(){
                 if (qtd.length==10) {
                     qtd.shift()
                 }
+                if(json.length == 0){
+                    horario.push(0)
+                }
                 horario.push(json[0].horario);
                 qtd.push(qtd_ax);
 
